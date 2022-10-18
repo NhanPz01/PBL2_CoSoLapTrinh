@@ -1,8 +1,12 @@
-#include "TG.h"
-#include <bits/stdc++.h>
+#include <iostream>
+#include "Point.h"
+#include "Matrix.h"
+#include "Number.h"
 using namespace std;
 int main(){
-    TG t1(1,2,3,4,5,6);
-    t1.Show();
+    Number n1(1.23), n2(2.1212);
+    int x = n1;
+    double y = n2;
+    cout << x << ", " << y;
     return 0;
 }
