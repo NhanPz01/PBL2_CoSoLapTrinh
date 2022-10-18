@@ -1,12 +1,14 @@
 #include <iostream>
 #include "Point.h"
-#include "Matrix.h"
+#include "Vector.h"
 #include "Number.h"
 using namespace std;
 int main(){
-    Number n1(1.23), n2(2.1212);
-    int x = n1;
-    double y = n2;
-    cout << x << ", " << y;
+    Vector v1(3,2);
+    Vector v2(v1);
+    Vector v3 = v1;
+    Vector v4;
+    v4 = v1;
     return 0;
 }
+
