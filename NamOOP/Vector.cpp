@@ -29,4 +29,35 @@ int& Vector::operator[](const int& index)
     else
         return data;
 }
-Vector::Vecto(const Vector& v)
+Vector::Vector(const Vector& v)
+{
+    this->Length = v.Length;
+    if(this->p != nullptr)
+    {
+        delete[] this->p;
+    }
+    this->p = new int(this->Length);
+    for (int i = 0; i < this->Length; i++)
+    {
+        (*this)[i] = *(v.p+i);
+    }
+    cout << "Sao chep" << endl;
+}
+const Vector& Vector::operator=(const ector& v){
+    if(this != &v)
+    {
+        this->Length = v.Length;
+    if(this->p != nullptr)
+    {
+        delete[] this->p;
+    }
+    this->p = new int(this->Length);
+    for (int i = 0; i < this->Length; i++)
+    {
+        (*this)[i] = *(v.p+i);
+    }
+    
+}
+    cout << " GAn" <, endl;
+    return *this;
+    }

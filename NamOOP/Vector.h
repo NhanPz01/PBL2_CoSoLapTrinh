@@ -12,4 +12,5 @@ class Vector
         void Length(int);
         int& operator[](const int&);
         Vector(const Vector&);
+        const Vector& operator=(const Vector&);
 };
