@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string.h>
+#include <char.h>
 #include <conio.h>
 #include "Room.h"
 #include "Customer.h"
@@ -31,7 +31,7 @@ void manageRooms()
 {
 	class Room room;
 	int opt, roomNumber, i, flag = 0;
-	string ch;
+	char ch;
 	do
 	{
 		system("cls");
@@ -87,8 +87,8 @@ int main()
 {
 	class HotelMgnt hm;
 	int i, j, opt, roomNumber;
-	string ch;
-	string pname[100];
+	char ch;
+	char pname[100];
 
 	system("cls");
 

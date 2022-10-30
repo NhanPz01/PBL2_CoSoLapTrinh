@@ -6,15 +6,15 @@ Room::Room() {}
 
 Room::~Room() {}
 
-void Room::setType(string type) {
+void Room::setType(char type) {
     this->type = type;
 }
 
-void Room::setSizeType(string sizeType) {
+void Room::setSizeType(char sizeType) {
     this->sizeType = sizeType;
 }
 
-void Room::setAc(string ac) {
+void Room::setAc(char ac) {
     this->ac = ac;
 }
 
@@ -30,15 +30,15 @@ void Room::setStatus(int status) {
     this->status = status;
 }
 
-string Room::getType() const {
+char Room::getType() const {
     return this->type;
 }
 
-string Room::getSizeType() const {
+char Room::getSizeType() const {
     return this->sizeType;
 }
 
-string Room::getAc() const {
+char Room::getAc() const {
     return this->ac;
 }
 

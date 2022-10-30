@@ -1,23 +1,23 @@
 #include "Customer.h"
 class Room {
 	protected:
-		string type;
-		string sizeType;
-		string ac;
+		char type;
+		char sizeType;
+		char ac;
 		int roomNumber;
 		int rent;
 		int status;
 		class Customer cust;
     public:
-		void setType(string);
-		void setSizeType(string);
-        void setAc(string);
+		void setType(char);
+		void setSizeType(char);
+        void setAc(char);
 		void setRoomNumber(int);
 		void setRent(int);
         void setStatus(int);
-		string getType() const;
-		string getSizeType() const;
-		string getAc() const;
+		char getType() const;
+		char getSizeType() const;
+		char getAc() const;
         int getRoomNumber() const;
 		int getRent() const;
         int getStatus() const;
