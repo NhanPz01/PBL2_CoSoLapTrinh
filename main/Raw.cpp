@@ -118,7 +118,7 @@ void HotelMgnt::guestSummaryReport(){
 
 if(count==0){
 	cout<<"\n No Guest in Hotel !!";
-}	
+}
 for(int i=0;i<count;i++)
 {
 if(rooms[i].status==1)
@@ -127,9 +127,9 @@ cout<<"\n Customer First Name : "<<rooms[i].cust.name;
 cout<<"\n Room Number : "<<rooms[i].roomNumber;
 cout<<"\n Address (only city) : "<<rooms[i].cust.address;
 cout<<"\n Phone : "<<rooms[i].cust.phone;
-cout<<"\n---------------------------------------";	
+cout<<"\n---------------------------------------";
 }
-	
+
 }
 
 getch();
@@ -402,7 +402,7 @@ hm.checkOut(rno);
 }
 break;
 case 6:
-hm.guestSummaryReport();	
+hm.guestSummaryReport();
 break;
 case 7:
 cout<<"\nTHANK YOU! FOR USING SOFTWARE";

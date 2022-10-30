@@ -5,23 +5,23 @@ Customer::Customer() {}
 
 Customer::~Customer() {}
 
-void Customer::setName(string& name) {
+void Customer::setName(char& name) {
     this->name = name;
 }
 
-void Customer::setAddress(string& address) {
+void Customer::setAddress(char& address) {
     this->address = address;
 }
 
-void Customer::setPhone(string& phone) {
+void Customer::setPhone(char& phone) {
     this->phone = phone;
 }
 
-void Customer::setFromDate(string& from_date) {
+void Customer::setFromDate(char& from_date) {
     this->from_date = from_date;
 }
 
-void Customer::setToDate(string& to_date) {
+void Customer::setToDate(char& to_date) {
     this->to_date = to_date;
 }
 
@@ -33,23 +33,23 @@ void Customer::setBookingId(int booking_id) {
     this->booking_id = booking;
 }
 
-string Customer::getName() const {
+char Customer::getName() const {
     return this->name;
 }
 
-string Customer::getAddress() const {
+char Customer::getAddress() const {
     return this->address;
 }
 
-string Customer::getPhone() const {
+char Customer::getPhone() const {
     return this->phone;
 }
 
-string Customer::getFromDate() const {
+char Customer::getFromDate() const {
     return this->from_date;
 }
 
-string Customer::getToDate() const {
+char Customer::getToDate() const {
     return this->to_date;
 }
 

@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string.h>
+#include <char>
 #include <conio.h>
 
 #define max 100
@@ -9,50 +9,50 @@ using namespace std;
 class Customer
 {
 protected:
-	string name;
-	string address;
-	string phone;
-	string from_date;
-	string to_date;
+	char name;
+	char address;
+	char phone;
+	char from_date;
+	char to_date;
 	float payment_advance;
 	int booking_id;
 
 public:
 	Customer();
 	~Customer();
-	void setName(string);
-	void setAddress(string);
-	void setPhone(string);
-	void setFromDate(string);
-	void setToDate(string);
+	void setName(char);
+	void setAddress(char);
+	void setPhone(char);
+	void setFromDate(char);
+	void setToDate(char);
 	void setPaymentAdvance(float);
 	void setBookingId(int);
-	string getName() const;
-	string getAddress() const;
-	string getPhone() const;
-	string getFromDate() const;
-	string getToDate() const;
+	char getName() const;
+	char getAddress() const;
+	char getPhone() const;
+	char getFromDate() const;
+	char getToDate() const;
 	float getPaymentAdvance() const;
 	int getBookingId() const;
 };
 
-void Customer::setName(string name) {
+void Customer::setName(char name) {
 	this->name = name;
 }
 
-void Customer::setAddress(string address) {
+void Customer::setAddress(char address) {
 	this->address = address;
 }
 
-void Customer::setPhone(string phone) {
+void Customer::setPhone(char phone) {
 	this->phone = phone;
 }
 
-void Customer::setFromDate(string from_date) {
+void Customer::setFromDate(char from_date) {
 	this->from_date = from_date;
 }
 
-void Customer::setToDate(string to_date) {
+void Customer::setToDate(char to_date) {
 	this->to_date = to_date;
 }
 
@@ -64,27 +64,27 @@ void Customer::setBookingId(int booking_id) {
 	this->booking_id = booking_id;
 }
 
-string Customer::getName() const
+char Customer::getName() const
 {
 	return this->name;
 }
 
-string Customer::getAddress() const
+char Customer::getAddress() const
 {
 	return this->address;
 }
 
-string Customer::getPhone() const
+char Customer::getPhone() const
 {
 	return this->phone;
 }
 
-string Customer::getFromDate() const
+char Customer::getFromDate() const
 {
 	return this->from_date;
 }
 
-string Customer::getToDate() const
+char Customer::getToDate() const
 {
 	return this->to_date;
 }
@@ -102,24 +102,24 @@ int Customer::getBookingId() const
 class Room
 {
 public:
-	string type;
-	string stype;
-	string ac;
+	char type;
+	char stype;
+	char ac;
 	int roomNumber;
 	int rent;
 	int status;
 
 	Room();
 	~Room();
-	void setType(string);
-	void setStype(string);
-    void setAc(string);
+	void setType(char);
+	void setStype(char);
+    void setAc(char);
 	void setRoomNumber(int);
     void setRent(int);
 	void setStatus(int);
-	string getType() const;
-    string getStype() const;
-	string getAc() const;
+	char getType() const;
+    char getStype() const;
+	char getAc() const;
     int getRoomNumber() const;
 	int getRent() const;
     int getStatus() const;
@@ -199,7 +199,7 @@ class HotelMgnt
 public:
 	void checkIn();
 	void getAvailRoom();
-	void searchCustomer(string *);
+	void searchCustomer(char *);
 	void checkOut(int);
 	void guestSummaryReport();
 };
@@ -252,27 +252,27 @@ void HotelMgnt::checkIn()
 		}
 
 		cout << "\nEnter booking id: ";
-		cin >> rooms[i].cust.booking_id;
+		cin >> rooms[i].cust.getBookingId();
 
 		cout << "\nEnter Customer Name (First Name): ";
-		cin >> rooms[i].cust.name;
+		cin >> rooms[i].cust.getName();
 
 		cout << "\nEnter Address (only city): ";
-		cin >> rooms[i].cust.address;
+		cin >> rooms[i].cust.getAddress();
 
 		cout << "\nEnter Phone: ";
-		cin >> rooms[i].cust.phone;
+		cin >> rooms[i].cust.getPhone();
 
 		cout << "\nEnter From Date: ";
-		cin >> rooms[i].cust.from_date;
+		cin >> rooms[i].cust.getFromDate();
 
 		cout << "\nEnter to  Date: ";
-		cin >> rooms[i].cust.to_date;
+		cin >> rooms[i].cust.getToDate();
 
 		cout << "\nEnter Advance Payment: ";
-		cin >> rooms[i].cust.payment_advance;
+		cin >> rooms[i].cust.getPaymentAdvance();
 
-		rooms[i].status = 1;
+		rooms[i].getStatus() = 1;
 
 		cout << "\n Customer Checked-in Successfully..";
 		getch();
@@ -301,7 +301,7 @@ void HotelMgnt::getAvailRoom()
 }
 
 // hotel management shows all persons that have booked room
-void HotelMgnt::searchCustomer(string *pname)
+void HotelMgnt::searchCustomer(char *pname)
 {
 	int i, found = 0;
 	for (i = 0; i < count; i++)
@@ -363,7 +363,7 @@ void manageRooms()
 {
 	class Room room;
 	int opt, roomNumber, i, flag = 0;
-	string ch;
+	char ch;
 	do
 	{
 		system("cls");
@@ -419,8 +419,8 @@ int main()
 {
 	class HotelMgnt hm;
 	int i, j, opt, roomNumber;
-	string ch;
-	string pname[100];
+	char ch;
+	char pname[100];
 
 	system("cls");
 
