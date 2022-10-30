@@ -6,34 +6,53 @@
 using namespace std;
 
 //Class Customer
-class Customer
-{
-public:
-char name[100];
-char address[100];
-char phone[12];
-char from_date[20];
-char to_date[20];
-float payment_advance;
-int booking_id;
+class Customer {
+	protected:
+		string name[100];
+		string address[100];
+		string phone[12];
+		string from_date[20];
+		string to_date[20];
+		float payment_advance;
+		int booking_id;
+	public:
+		Customer();
+		~Customer();
+		void setName(string);
+		void setAddress(string);
+        void setPhone(string);
+		void setFromDate(string);
+        void setToDate(string);
+		void setPaymentAdvance(float);
+        void setBookingId(int);
+		string getName() const;
+		string getAddress() const;
+        string getPhone() const;
+		string getFromDate() const;
+        string getToDate() const;
+		float getPaymentAdvance() const;
+        int getBookingId() const;
 };
 
 
-class Room
-{
-public:
-char type;
-char stype;
-char ac;
-int roomNumber;
-int rent;
-int status;
+class Room {
+	protected:
+		string type;
+		string stype;
+		string ac;
+		int roomNumber;
+		int rent;
+		int status;
+		class Customer cust;
 
-class Customer cust;
-class Room addRoom(int);
-void searchRoom(int);
-void deleteRoom(int);
-void displayRoom(Room);
+	public:
+		Room();
+        ~Room();
+        void setType(string);
+		class Room addRoom(int);
+		void searchRoom(int);
+		void deleteRoom(int);
+		void displayRoom(Room);
 };
 
 //Global Declarations
@@ -41,10 +60,9 @@ class Room rooms[max];
 int count=0;
 
 
-Room Room::addRoom(int rno)
-{
+Room Room::addRoom(int rno) {
 class Room room;
-room.roomNumber=rno;
+room.roomNumber = rno;
 cout<<"\nType AC/Non-AC (A/N) : ";
 cin>>room.ac;
 cout<<"\nType Comfort (S/N) : ";
@@ -108,7 +126,7 @@ class HotelMgnt:protected Room
 public:
 void checkIn();
 void getAvailRoom();
-void searchCustomer(char *);
+void searchCustomer(string *);
 void checkOut(int);
 void guestSummaryReport();
 };
@@ -118,7 +136,7 @@ void HotelMgnt::guestSummaryReport(){
 
 if(count==0){
 	cout<<"\n No Guest in Hotel !!";
-}	
+}
 for(int i=0;i<count;i++)
 {
 if(rooms[i].status==1)
@@ -127,9 +145,9 @@ cout<<"\n Customer First Name : "<<rooms[i].cust.name;
 cout<<"\n Room Number : "<<rooms[i].roomNumber;
 cout<<"\n Address (only city) : "<<rooms[i].cust.address;
 cout<<"\n Phone : "<<rooms[i].cust.phone;
-cout<<"\n---------------------------------------";	
+cout<<"\n---------------------------------------";
 }
-	
+
 }
 
 getch();
@@ -213,7 +231,7 @@ getch();
 
 
 //hotel management shows all persons that have booked room
-void HotelMgnt::searchCustomer(char *pname)
+void HotelMgnt::searchCustomer(string *pname)
 {
 int i,found=0;
 for(i=0;i<count;i++)
@@ -277,7 +295,7 @@ void manageRooms()
 {
 class Room room;
 int opt,rno,i,flag=0;
-char ch;
+string ch;
 do
 {
 system("cls");
@@ -334,8 +352,8 @@ int main()
 {
 class HotelMgnt hm;
 int i,j,opt,rno;
-char ch;
-char pname[100];
+string ch;
+string pname[100];
 
 system("cls");
 
@@ -402,7 +420,7 @@ hm.checkOut(rno);
 }
 break;
 case 6:
-hm.guestSummaryReport();	
+hm.guestSummaryReport();
 break;
 case 7:
 cout<<"\nTHANK YOU! FOR USING SOFTWARE";
