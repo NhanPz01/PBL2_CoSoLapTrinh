@@ -1,10 +1,10 @@
 class Customer {
     protected:
-      string name[100];
-      string address[100];
-      string phone[12];
-      string from_date[20];
-      string to_date[20];
+      string name;
+      string address;
+      string phone;
+      string from_date;
+      string to_date;
       float payment_advance;
       int booking_id;
     public:

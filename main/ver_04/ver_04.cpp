@@ -374,6 +374,10 @@ void saveRoomsData(const string ROOMS) {
 	roomsFile.close();
 }
 
+void getGuestsData(const string GUEST) {
+	
+}
+
 using namespace std;
 int main()
 {
@@ -466,4 +470,3 @@ int main()
 
 	getch();
 }
-// aaaaa
