@@ -1,27 +1,27 @@
 class Customer {
     protected:
-      char name[100];
-      char address[100];
-      char phone[12];
-      char from_date[20];
-      char to_date[20];
+      string name;
+      string address;
+      string phone;
+      string from_date;
+      string to_date;
       float payment_advance;
       int booking_id;
     public:
           Customer();
           ~Customer();
-          void setName(char&);
-          void setAddress(char&);
-          void setPhone(char&);
-          void setFromDate(char&);
-          void setToDate(char&);
+          void setName(string&);
+          void setAddress(string&);
+          void setPhone(string&);
+          void setFromDate(string&);
+          void setToDate(string&);
           void setPaymentAdvance(float);
           void setBookingId(int);
-          char getName() const;
-          char getAddress() const;
-          char getPhone() const;
-          char getFromDate() const;
-          char getToDate() const;
+          string getName() const;
+          string getAddress() const;
+          string getPhone() const;
+          string getFromDate() const;
+          string getToDate() const;
           float getPaymentAdvance() const;
           int getBookingId() const;
 };

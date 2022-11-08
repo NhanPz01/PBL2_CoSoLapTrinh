@@ -9,11 +9,11 @@ using namespace std;
 class Customer
 {
 public:
-char name[100];
-char address[100];
-char phone[12];
-char from_date[20];
-char to_date[20];
+string name[100];
+string address[100];
+string phone[12];
+string from_date[20];
+string to_date[20];
 float payment_advance;
 int booking_id;
 };
@@ -22,9 +22,9 @@ int booking_id;
 class Room
 {
 public:
-char type;
-char stype;
-char ac;
+string type;
+string stype;
+string ac;
 int roomNumber;
 int rent;
 int status;
@@ -108,7 +108,7 @@ class HotelMgnt:protected Room
 public:
 void checkIn();
 void getAvailRoom();
-void searchCustomer(char *);
+void searchCustomer(string *);
 void checkOut(int);
 void guestSummaryReport();
 };
@@ -213,7 +213,7 @@ getch();
 
 
 //hotel management shows all persons that have booked room
-void HotelMgnt::searchCustomer(char *pname)
+void HotelMgnt::searchCustomer(string *pname)
 {
 int i,found=0;
 for(i=0;i<count;i++)
@@ -277,7 +277,7 @@ void manageRooms()
 {
 class Room room;
 int opt,rno,i,flag=0;
-char ch;
+string ch;
 do
 {
 system("cls");
@@ -334,8 +334,8 @@ int main()
 {
 class HotelMgnt hm;
 int i,j,opt,rno;
-char ch;
-char pname[100];
+string ch;
+string pname[100];
 
 system("cls");
 

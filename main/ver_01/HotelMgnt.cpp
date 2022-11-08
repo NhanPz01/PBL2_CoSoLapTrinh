@@ -93,7 +93,7 @@ void HotelMgnt::getAvailRoom()
 }
 
 // hotel management shows all persons that have booked room
-void HotelMgnt::searchCustomer(char *pname)
+void HotelMgnt::searchCustomer(string *pname)
 {
 	int i, found = 0;
 	for (i = 0; i < count; i++)

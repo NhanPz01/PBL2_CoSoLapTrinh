@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <conio.h>
 
@@ -8,7 +9,7 @@ using namespace std;
 // Class Customer
 class Customer
 {
-protected:
+public:
 	string name;
 	string address;
 	string phone;
@@ -16,89 +17,9 @@ protected:
 	string to_date;
 	float payment_advance;
 	int booking_id;
-
-public:
-	Customer();
-	~Customer();
-	void setName(string);
-	void setAddress(string);
-	void setPhone(string);
-	void setFromDate(string);
-	void setToDate(string);
-	void setPaymentAdvance(float);
-	void setBookingId(int);
-	string getName() const;
-	string getAddress() const;
-	string getPhone() const;
-	string getFromDate() const;
-	string getToDate() const;
-	float getPaymentAdvance() const;
-	int getBookingId() const;
 };
 
-void Customer::setName(string name) {
-	this->name = name;
-}
-
-void Customer::setAddress(string address) {
-	this->address = address;
-}
-
-void Customer::setPhone(string phone) {
-	this->phone = phone;
-}
-
-void Customer::setFromDate(string from_date) {
-	this->from_date = from_date;
-}
-
-void Customer::setToDate(string to_date) {
-	this->to_date = to_date;
-}
-
-void Customer::setPaymentAdvance(float payment_advance) {
-	this->payment_advance = payment_advance;
-}
-
-void Customer::setBookingId(int booking_id) {
-	this->booking_id = booking_id;
-}
-
-string Customer::getName() const
-{
-	return this->name;
-}
-
-string Customer::getAddress() const
-{
-	return this->address;
-}
-
-string Customer::getPhone() const
-{
-	return this->phone;
-}
-
-string Customer::getFromDate() const
-{
-	return this->from_date;
-}
-
-string Customer::getToDate() const
-{
-	return this->to_date;
-}
-
-float Customer::getPaymentAdvance() const
-{
-	return this->payment_advance;
-}
-
-int Customer::getBookingId() const
-{
-	return this->booking_id;
-}
-
+// Class Room
 class Room
 {
 public:
@@ -109,35 +30,32 @@ public:
 	int rent;
 	int status;
 
-	Room();
-	~Room();
-	void setType(string);
-	void setStype(string);
-    void setAc(string);
-	void setRoomNumber(int);
-    void setRent(int);
-	void setStatus(int);
-	string getType() const;
-    string getStype() const;
-	string getAc() const;
-    int getRoomNumber() const;
-	int getRent() const;
-    int getStatus() const;
 	class Customer cust;
 	class Room addRoom(int);
 	void searchRoom(int);
+	void deleteRoom(int);
 	void displayRoom(Room);
-	friend class HotelMgnt;
+};
+
+// Class Hotel Management
+class HotelMgnt : protected Room
+{
+public:
+	void checkIn();
+	void getAvailRoom();
+	void searchCustomer(string);
+	void checkOut(int);
+	void guestSummaryReport();
 };
 
 // Global Declarations
 class Room rooms[max];
-int count = 0;
+int count = 0; // number of rooms in rooms.
 
-Room Room::addRoom(int roomNumber)
+Room Room::addRoom(int rno)
 {
 	class Room room;
-	room.roomNumber = roomNumber;
+	room.roomNumber = rno;
 	cout << "\nType AC/Non-AC (A/N) : ";
 	cin >> room.ac;
 	cout << "\nType Comfort (S/N) : ";
@@ -147,17 +65,18 @@ Room Room::addRoom(int roomNumber)
 	cout << "\nDaily Rent : ";
 	cin >> room.rent;
 	room.status = 0;
+
 	cout << "\n Room Added Successfully!";
 	getch();
 	return room;
 }
 
-void Room::searchRoom(int roomNumber)
+void Room::searchRoom(int rno)
 {
 	int i, found = 0;
 	for (i = 0; i < count; i++)
 	{
-		if (rooms[i].roomNumber == roomNumber)
+		if (rooms[i].roomNumber == rno)
 		{
 			found = 1;
 			break;
@@ -193,17 +112,6 @@ void Room::displayRoom(Room tempRoom)
 	cout << "\nRent: " << tempRoom.rent;
 }
 
-// hotel management class
-class HotelMgnt
-{
-public:
-	void checkIn();
-	void getAvailRoom();
-	void searchCustomer(string *);
-	void checkOut(int);
-	void guestSummaryReport();
-};
-
 void HotelMgnt::guestSummaryReport()
 {
 
@@ -215,10 +123,10 @@ void HotelMgnt::guestSummaryReport()
 	{
 		if (rooms[i].status == 1)
 		{
-			cout << "\n Customer First Name : " << rooms[i].cust.getName();
-			cout << "\n Room Number : " << rooms[i].getRoomNumber();
-			cout << "\n Address (only city) : " << rooms[i].cust.getAddress();
-			cout << "\n Phone : " << rooms[i].cust.getPhone();
+			cout << "\n Customer First Name : " << rooms[i].cust.name;
+			cout << "\n Room Number : " << rooms[i].roomNumber;
+			cout << "\n Address (only city) : " << rooms[i].cust.address;
+			cout << "\n Phone : " << rooms[i].cust.phone;
 			cout << "\n---------------------------------------";
 		}
 	}
@@ -229,14 +137,14 @@ void HotelMgnt::guestSummaryReport()
 // hotel management reservation of room
 void HotelMgnt::checkIn()
 {
-	int i, found = 0, roomNumber;
+	int i, found = 0, rno;
 
 	class Room room;
 	cout << "\nEnter Room number : ";
-	cin >> roomNumber;
+	cin >> rno;
 	for (i = 0; i < count; i++)
 	{
-		if (rooms[i].getRoomNumber() == roomNumber)
+		if (rooms[i].roomNumber == rno)
 		{
 			found = 1;
 			break;
@@ -252,27 +160,33 @@ void HotelMgnt::checkIn()
 		}
 
 		cout << "\nEnter booking id: ";
-		cin >> rooms[i].cust.getBookingId();
+		cin >> rooms[i].cust.booking_id;
 
-		cout << "\nEnter Customer Name (First Name): ";
-		cin >> rooms[i].cust.getName();
+		cout << "\nEnter Customer Name (Full Name): ";
+		cin.ignore();
+		getline(cin, rooms[i].cust.name);
+		// cin >> rooms[i].cust.name;
 
 		cout << "\nEnter Address (only city): ";
-		cin >> rooms[i].cust.getAddress();
+		// cin >> rooms[i].cust.address;
+		// cin.ignore();
+		getline(cin, rooms[i].cust.address);
+		cout << endl
+			 << "address: " << rooms[i].cust.address;
 
 		cout << "\nEnter Phone: ";
-		cin >> rooms[i].cust.getPhone();
+		cin >> rooms[i].cust.phone;
 
 		cout << "\nEnter From Date: ";
-		cin >> rooms[i].cust.getFromDate();
+		cin >> rooms[i].cust.from_date;
 
 		cout << "\nEnter to  Date: ";
-		cin >> rooms[i].cust.getToDate();
+		cin >> rooms[i].cust.to_date;
 
 		cout << "\nEnter Advance Payment: ";
-		cin >> rooms[i].cust.getPaymentAdvance();
+		cin >> rooms[i].cust.payment_advance;
 
-		rooms[i].getStatus() = 1;
+		rooms[i].status = 1;
 
 		cout << "\n Customer Checked-in Successfully..";
 		getch();
@@ -301,12 +215,13 @@ void HotelMgnt::getAvailRoom()
 }
 
 // hotel management shows all persons that have booked room
-void HotelMgnt::searchCustomer(string *pname)
+void HotelMgnt::searchCustomer(string pname)
 {
 	int i, found = 0;
 	for (i = 0; i < count; i++)
 	{
-		if (rooms[i].status == 1 && stricmp(rooms[i].cust.name, pname) == 0)
+		// if (rooms[i].status == 1 && stricmp(*(rooms + i).cust.name, pname) == 0)
+		if ((rooms[i].status == 1) && (rooms[i].cust.name == pname))
 		{
 			cout << "\nCustomer Name: " << rooms[i].cust.name;
 			cout << "\nRoom Number: " << rooms[i].roomNumber;
@@ -326,13 +241,13 @@ void HotelMgnt::searchCustomer(string *pname)
 // hotel managemt generates the bill of the expenses
 void HotelMgnt::checkOut(int roomNum)
 {
-	int i, found = 0, days, roomNumber;
+	int i, found = 0, days, rno;
 	float billAmount = 0;
 	for (i = 0; i < count; i++)
 	{
 		if (rooms[i].status == 1 && rooms[i].roomNumber == roomNum)
 		{
-			// roomNumber = rooms[i].roomNumber;
+			// rno = rooms[i].roomNumber;
 			found = 1;
 			// getch();
 			break;
@@ -362,7 +277,7 @@ void HotelMgnt::checkOut(int roomNum)
 void manageRooms()
 {
 	class Room room;
-	int opt, roomNumber, i, flag = 0;
+	int opt, rno, i, flag = 0;
 	string ch;
 	do
 	{
@@ -379,11 +294,11 @@ void manageRooms()
 		{
 		case 1:
 			cout << "\nEnter Room Number: ";
-			cin >> roomNumber;
+			cin >> rno;
 			i = 0;
 			for (i = 0; i < count; i++)
 			{
-				if (rooms[i].roomNumber == roomNumber)
+				if (rooms[i].roomNumber == rno)
 				{
 					flag = 1;
 				}
@@ -396,14 +311,14 @@ void manageRooms()
 			}
 			else
 			{
-				rooms[count] = room.addRoom(roomNumber);
+				rooms[count] = room.addRoom(rno);
 				count++;
 			}
 			break;
 		case 2:
 			cout << "\nEnter room number: ";
-			cin >> roomNumber;
-			room.searchRoom(roomNumber);
+			cin >> rno;
+			room.searchRoom(rno);
 			break;
 		case 3:
 			// nothing to do
@@ -414,13 +329,65 @@ void manageRooms()
 		}
 	} while (opt != 3);
 }
+
+void getRoomsData(const string ROOMS)
+{
+	ifstream roomsFile;
+	roomsFile.open(ROOMS);
+	if (!roomsFile.is_open())
+	{
+		cout << "Unable to get the rooms information" << endl;
+	}
+	else
+	{
+		roomsFile >> count;
+		for (int i = 0; i < count; i++) {
+			Room room;
+			roomsFile >> room.roomNumber;
+			roomsFile >> room.ac;
+			roomsFile >> room.type;
+			roomsFile >> room.stype;
+			roomsFile >> room.rent;
+			roomsFile >> room.status;
+			rooms[i] = room;
+		}
+	}
+	roomsFile.close();
+}
+
+void saveRoomsData(const string ROOMS) {
+	ofstream roomsFile;
+	roomsFile.open(ROOMS);
+	if (!roomsFile.is_open()) {
+		cout << "Unable to save the rooms information" << endl;
+	} else {
+		roomsFile << count << endl;
+		for (int i = 0; i < count; i++) {
+			roomsFile << rooms[i].roomNumber << endl;
+			roomsFile << rooms[i].ac << endl;
+			roomsFile << rooms[i].type << endl;
+			roomsFile << rooms[i].stype << endl;
+			roomsFile << rooms[i].rent << endl;
+			roomsFile << rooms[i].status << endl;
+		}
+	}
+	roomsFile.close();
+}
+
+void getGuestsData(const string GUEST) {
+	
+}
+
 using namespace std;
 int main()
 {
-	class HotelMgnt hm;
-	int i, j, opt, roomNumber;
+	string const ROOMS = "rooms.txt";
+	string const ROOMSSAVE = "rooms.txt";
+	getRoomsData(ROOMS);
+	class HotelMgnt hotelManagement;
+	int i, j, opt, rno;
 	string ch;
-	string pname[100];
+	string pname;
 
 	system("cls");
 
@@ -449,7 +416,7 @@ int main()
 				getch();
 			}
 			else
-				hm.checkIn();
+				hotelManagement.checkIn();
 			break;
 		case 3:
 			if (count == 0)
@@ -458,7 +425,7 @@ int main()
 				getch();
 			}
 			else
-				hm.getAvailRoom();
+				hotelManagement.getAvailRoom();
 			break;
 		case 4:
 			if (count == 0)
@@ -469,8 +436,10 @@ int main()
 			else
 			{
 				cout << "Enter Customer Name: ";
-				cin >> pname;
-				hm.searchCustomer(pname);
+				// cin >> pname;
+				cin.ignore();
+				getline(cin, pname);
+				hotelManagement.searchCustomer(pname);
 			}
 			break;
 		case 5:
@@ -482,14 +451,15 @@ int main()
 			else
 			{
 				cout << "Enter Room Number : ";
-				cin >> roomNumber;
-				hm.checkOut(roomNumber);
+				cin >> rno;
+				hotelManagement.checkOut(rno);
 			}
 			break;
 		case 6:
-			hm.guestSummaryReport();
+			hotelManagement.guestSummaryReport();
 			break;
 		case 7:
+			saveRoomsData(ROOMSSAVE);
 			cout << "\nTHANK YOU! FOR USING SOFTWARE";
 			break;
 		default:
