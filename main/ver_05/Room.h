@@ -27,6 +27,6 @@ public:
     int getStatus() const;
     Customer getCustomer() const;
 	Room addRoom(int);
-	void searchRoom(int, int, Room*);
+	void searchRoom(int, int&, Room*);
 	void displayRoom(Room);
 };

@@ -3,7 +3,7 @@
 #include "HotelMgnt.h"
 using namespace std;
 
-void HotelMgnt::guestSummaryReport(Room rooms[], int numberOfRoom)
+void HotelMgnt::guestSummaryReport(Room rooms[], int& numberOfRoom)
 {
 
 	if (numberOfRoom == 0)
@@ -26,7 +26,7 @@ void HotelMgnt::guestSummaryReport(Room rooms[], int numberOfRoom)
 }
 
 // hotel management reservation of room
-void HotelMgnt::checkIn(Room rooms[], int numberOfRoom)
+void HotelMgnt::checkIn(Room rooms[], int& numberOfRoom)
 {
 	int i, found = 0, roomNumber;
 
@@ -89,7 +89,7 @@ void HotelMgnt::checkIn(Room rooms[], int numberOfRoom)
 }
 
 // hotel management shows available rooms
-void HotelMgnt::getAvailRoom(Room rooms[], int numberOfRoom)
+void HotelMgnt::getAvailRoom(Room rooms[], int& numberOfRoom)
 {
 	int i, found = 0;
 	for (i = 0; i < numberOfRoom; i++)
@@ -110,7 +110,7 @@ void HotelMgnt::getAvailRoom(Room rooms[], int numberOfRoom)
 }
 
 // hotel management shows all persons that have booked room
-void HotelMgnt::searchCustomer(Room rooms[], int numberOfRoom, string pname)
+void HotelMgnt::searchCustomer(Room rooms[], int& numberOfRoom, string pname)
 {
 	int i, found = 0;
 	for (i = 0; i < numberOfRoom; i++)
@@ -133,7 +133,7 @@ void HotelMgnt::searchCustomer(Room rooms[], int numberOfRoom, string pname)
 }
 
 // hotel managemt generates the bill of the expenses
-void HotelMgnt::checkOut(Room rooms[], int numberOfRoom, int roomNum)
+void HotelMgnt::checkOut(Room rooms[], int& numberOfRoom, int roomNum)
 {
 	int i, found = 0, days;
 	float billAmount = 0;

@@ -86,7 +86,7 @@ Room Room::addRoom(int roomNumber)
 	return room;
 }
 
-void Room::searchRoom(int roomNumber, int numberOfRoom, Room rooms[])
+void Room::searchRoom(int roomNumber, int& numberOfRoom, Room rooms[])
 {
 	int i, found = 0;
 	for (i = 0; i < numberOfRoom; i++)

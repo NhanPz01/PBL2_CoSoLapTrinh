@@ -12,7 +12,7 @@ class Room rooms[max];
 int count = 0; // number of room.
 
 // managing rooms (adding and searching available rooms)
-void manageRooms(Room rooms[], int numberOfRoom)
+void manageRooms(Room rooms[], int& numberOfRoom)
 {
 	class Room room;
 	int opt, roomNumber, i, flag = 0;
@@ -32,8 +32,7 @@ void manageRooms(Room rooms[], int numberOfRoom)
 		case 1:
 			cout << "\nEnter Room Number: ";
 			cin >> roomNumber;
-			i = 0;
-			for (i = 0; i < numberOfRoom; i++)
+			for (int i = 0; i < numberOfRoom; i++)
 			{
 				if (rooms[i].getRoomNumber() == roomNumber)
 				{
@@ -55,7 +54,7 @@ void manageRooms(Room rooms[], int numberOfRoom)
 		case 2:
 			cout << "\nEnter room number: ";
 			cin >> roomNumber;
-			room.searchRoom(count, roomNumber, rooms);
+			room.searchRoom(roomNumber, count, rooms);
 			break;
 		case 3:
 			// do nothing
@@ -67,7 +66,7 @@ void manageRooms(Room rooms[], int numberOfRoom)
 	} while (opt != 3);
 }
 
-void getRoomsData(const string ROOMS, Room rooms[], int numberOfRoom)
+void getRoomsData(const string ROOMS, Room rooms[], int& numberOfRoom)
 {
 	ifstream roomsFile;
 	roomsFile.open(ROOMS);
@@ -100,7 +99,7 @@ void getRoomsData(const string ROOMS, Room rooms[], int numberOfRoom)
 	roomsFile.close();
 }
 
-void saveRoomsData(const string ROOMS, Room rooms[], int numberOfRoom)
+void saveRoomsData(const string ROOMS, Room rooms[], int& numberOfRoom)
 {
 	ofstream roomsFile;
 	roomsFile.open(ROOMS);
