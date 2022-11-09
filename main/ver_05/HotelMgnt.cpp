@@ -57,7 +57,7 @@ void HotelMgnt::checkIn(Room rooms[], int& numberOfRoom)
 		cout << "\nBooking id: " << rooms[i].getCustomer().getBookingId() << "\n\n";
         rooms[i].getCustomer().setBookingId(booking_id);
 		cout << "\nEnter Customer Name (Full Name): ";
-		cin.ignore();
+		// cin.ignore();
 		getline(cin, name);
 		cout << "\nBooking id: " << rooms[i].getCustomer().getName() << "\n\n";
         rooms[i].getCustomer().setName(name);

@@ -2,6 +2,8 @@
 #include <conio.h>
 #include "Room.h"
 
+ostream& operator<<(ostream& o, const Customer& cust)
+
 void Room::setType(string type)
 {
     this->type = type;

@@ -29,4 +29,5 @@ public:
 	Room addRoom(int);
 	void searchRoom(int, int&, Room*);
 	void displayRoom(Room);
+    friend ostream& operator<<(ostream& o, const Customer& cust)
 };
