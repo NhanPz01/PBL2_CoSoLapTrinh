@@ -10,7 +10,7 @@ private:
 	int roomNumber;
 	int rent;
 	int status;
-	class Customer cust;
+	Customer cust;
 public:
     void setType(string);
     void setStype(string);
@@ -18,7 +18,7 @@ public:
     void setRoomNumber(int);
     void setRent(int);
     void setStatus(int);
-    void setCustomer(Customer);
+    void setCustomer(Customer&);
     string getType() const;
     string getStype() const;
     string getAc() const;

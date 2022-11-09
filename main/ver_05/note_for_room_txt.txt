@@ -6,4 +6,4 @@ line 1 -> number of room in rooms
 -> size type (B/S)
 -> daily rent
 -> status
-
+~

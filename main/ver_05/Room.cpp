@@ -32,6 +32,11 @@ void Room::setStatus(int status)
     this->status = status;
 }
 
+void Room::setCustomer(Customer& cust)
+{
+    this->cust = cust;
+}
+
 string Room::getType() const
 {
     return this->type;
