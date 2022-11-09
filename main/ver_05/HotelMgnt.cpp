@@ -54,21 +54,19 @@ void HotelMgnt::checkIn(Room rooms[], int& numberOfRoom)
         float payment_advance;
 		cout << "\nEnter booking id: ";
 		cin >> booking_id;
+		cout << "\nBooking id: " << rooms[i].getCustomer().getBookingId() << "\n\n";
         rooms[i].getCustomer().setBookingId(booking_id);
-
 		cout << "\nEnter Customer Name (Full Name): ";
 		cin.ignore();
 		getline(cin, name);
+		cout << "\nBooking id: " << rooms[i].getCustomer().getName() << "\n\n";
         rooms[i].getCustomer().setName(name);
-
 		cout << "\nEnter Address (only city): ";
 		getline(cin, address);
         rooms[i].getCustomer().setAddress(address);
-
 		cout << "\nEnter Phone: ";
 		cin >> phone;
         rooms[i].getCustomer().setPhone(phone);
-
 		cout << "\nEnter From Date: ";
 		cin >> from_date;
         rooms[i].getCustomer().setFromDate(from_date);
