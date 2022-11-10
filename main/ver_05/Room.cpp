@@ -79,16 +79,28 @@ Customer Room::getCustomer() const
 Room Room::addRoom(int roomNumber)
 {
 	class Room room;
-	room.roomNumber = roomNumber;
+	string type, stype, ac;
+	int rent;
+
+	room.setRoomNumber(roomNumber);
+
 	cout << "\nType AC/Non-AC (A/N) : ";
-	cin >> room.ac;
+	cin >> ac;
+	room.setAc(ac);
+
 	cout << "\nType Comfort (S/N) : ";
-	cin >> room.type;
+	cin >> type;
+	room.setType(type);
+
 	cout << "\nType Size (B/S) : ";
-	cin >> room.stype;
+	cin >> stype;
+	room.setStype(stype);
+
 	cout << "\nDaily Rent : ";
-	cin >> room.rent;
-	room.status = 0;
+	cin >> rent;
+	room.setRent(rent);
+
+	room.setStatus(0);
 
 	cout << "\n Room Added Successfully!";
 	getch();
@@ -100,7 +112,7 @@ void Room::searchRoom(int roomNumber, int& numberOfRoom, Room rooms[])
 	int i, found = 0;
 	for (i = 0; i < numberOfRoom; i++)
 	{
-		if (rooms[i].roomNumber == roomNumber)
+		if (rooms[i].getRoomNumber() == roomNumber)
 		{
 			found = 1;
 			break;
@@ -109,7 +121,7 @@ void Room::searchRoom(int roomNumber, int& numberOfRoom, Room rooms[])
 	if (found == 1)
 	{
 		cout << "Room Details\n";
-		if (rooms[i].status == 1)
+		if (rooms[i].getStatus() == 1)
 		{
 			cout << "\nRoom is Reserved";
 		}
@@ -129,9 +141,9 @@ void Room::searchRoom(int roomNumber, int& numberOfRoom, Room rooms[])
 
 void Room::displayRoom(Room tempRoom)
 {
-	cout << "\nRoom Number: \t" << tempRoom.roomNumber;
-	cout << "\nType AC/Non-AC (A/N) " << tempRoom.ac;
-	cout << "\nType Comfort (S/N) " << tempRoom.type;
-	cout << "\nType Size (B/S) " << tempRoom.stype;
-	cout << "\nRent: " << tempRoom.rent;
+	cout << "\nRoom Number: \t" << tempRoom.getRoomNumber();
+	cout << "\nType AC/Non-AC (A/N) " << tempRoom.getAc();
+	cout << "\nType Comfort (S/N) " << tempRoom.getType();
+	cout << "\nType Size (B/S) " << tempRoom.getStype();
+	cout << "\nRent: " << tempRoom.getRent();
 }

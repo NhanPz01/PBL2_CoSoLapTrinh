@@ -50,7 +50,7 @@ public:
 
 // Global Declarations
 class Room rooms[max];
-int count = 0; // number of rooms in rooms.
+int roomCount = 0; // number of rooms in rooms.
 
 Room Room::addRoom(int rno)
 {
@@ -74,7 +74,7 @@ Room Room::addRoom(int rno)
 void Room::searchRoom(int rno)
 {
 	int i, found = 0;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].roomNumber == rno)
 		{
@@ -115,11 +115,11 @@ void Room::displayRoom(Room tempRoom)
 void HotelMgnt::guestSummaryReport()
 {
 
-	if (count == 0)
+	if (roomCount == 0)
 	{
 		cout << "\n No Guest in Hotel !!";
 	}
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].status == 1)
 		{
@@ -142,7 +142,7 @@ void HotelMgnt::checkIn()
 	class Room room;
 	cout << "\nEnter Room number : ";
 	cin >> rno;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].roomNumber == rno)
 		{
@@ -197,7 +197,7 @@ void HotelMgnt::checkIn()
 void HotelMgnt::getAvailRoom()
 {
 	int i, found = 0;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].status == 0)
 		{
@@ -218,7 +218,7 @@ void HotelMgnt::getAvailRoom()
 void HotelMgnt::searchCustomer(string pname)
 {
 	int i, found = 0;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		// if (rooms[i].status == 1 && stricmp(*(rooms + i).cust.name, pname) == 0)
 		if ((rooms[i].status == 1) && (rooms[i].cust.name == pname))
@@ -243,7 +243,7 @@ void HotelMgnt::checkOut(int roomNum)
 {
 	int i, found = 0, days, rno;
 	float billAmount = 0;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].status == 1 && rooms[i].roomNumber == roomNum)
 		{
@@ -296,7 +296,7 @@ void manageRooms()
 			cout << "\nEnter Room Number: ";
 			cin >> rno;
 			i = 0;
-			for (i = 0; i < count; i++)
+			for (i = 0; i < roomCount; i++)
 			{
 				if (rooms[i].roomNumber == rno)
 				{
@@ -311,8 +311,8 @@ void manageRooms()
 			}
 			else
 			{
-				rooms[count] = room.addRoom(rno);
-				count++;
+				rooms[roomCount] = room.addRoom(rno);
+				roomCount++;
 			}
 			break;
 		case 2:
@@ -340,8 +340,8 @@ void getRoomsData(const string ROOMS)
 	}
 	else
 	{
-		roomsFile >> count;
-		for (int i = 0; i < count; i++) {
+		roomsFile >> roomCount;
+		for (int i = 0; i < roomCount; i++) {
 			Room room;
 			roomsFile >> room.roomNumber;
 			roomsFile >> room.ac;
@@ -361,8 +361,8 @@ void saveRoomsData(const string ROOMS) {
 	if (!roomsFile.is_open()) {
 		cout << "Unable to save the rooms information" << endl;
 	} else {
-		roomsFile << count << endl;
-		for (int i = 0; i < count; i++) {
+		roomsFile << roomCount << endl;
+		for (int i = 0; i < roomCount; i++) {
 			roomsFile << rooms[i].roomNumber << endl;
 			roomsFile << rooms[i].ac << endl;
 			roomsFile << rooms[i].type << endl;
@@ -375,7 +375,7 @@ void saveRoomsData(const string ROOMS) {
 }
 
 void getGuestsData(const string GUEST) {
-	
+
 }
 
 using namespace std;
@@ -410,7 +410,7 @@ int main()
 			manageRooms();
 			break;
 		case 2:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms data is not available.\nPlease add the rooms first.";
 				getch();
@@ -419,7 +419,7 @@ int main()
 				hotelManagement.checkIn();
 			break;
 		case 3:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms data is not available.\nPlease add the rooms first.";
 				getch();
@@ -428,7 +428,7 @@ int main()
 				hotelManagement.getAvailRoom();
 			break;
 		case 4:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms are not available.\nPlease add the rooms first.";
 				getch();
@@ -443,7 +443,7 @@ int main()
 			}
 			break;
 		case 5:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms are not available.\nPlease add the rooms first.";
 				getch();

@@ -74,7 +74,7 @@ Room Room::addRoom(int roomNumber) {
 
 void Room::searchRoom(int roomNumber, const Room& rooms) {
 	int i, found = 0;
-	for (i = 0; i < count; i++) {
+	for (i = 0; i < roomCount; i++) {
 		if (*(rooms + i).getRoomNumber() == roomNumber) {
 			found = 1;
 			break;
@@ -96,7 +96,7 @@ void Room::searchRoom(int roomNumber, const Room& rooms) {
 }
 
 void Room::deleteRoom(int roomNumber, const Room& rooms) {
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < roomCount; i++) {
         if (*(rooms + i).getRoomNumber() == roomNumber) {
             delete [] *(rooms + i);
         }

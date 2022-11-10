@@ -15,7 +15,7 @@ using namespace std;
 
 // Global Declarations
 class Room rooms[max];
-int count = 0;
+int roomCount = 0;
 
 
 
@@ -49,7 +49,7 @@ void manageRooms()
 			cout << "\nEnter Room Number: ";
 			cin >> roomNumber;
 			i = 0;
-			for (i = 0; i < count; i++)
+			for (i = 0; i < roomCount; i++)
 			{
 				if (rooms[i].roomNumber == roomNumber)
 				{
@@ -64,8 +64,8 @@ void manageRooms()
 			}
 			else
 			{
-				rooms[count] = room.addRoom(roomNumber);
-				count++;
+				rooms[roomCount] = room.addRoom(roomNumber);
+				roomCount++;
 			}
 			break;
 		case 2:
@@ -111,7 +111,7 @@ int main()
 			manageRooms();
 			break;
 		case 2:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms data is not available.\nPlease add the rooms first.";
 				getch();
@@ -120,7 +120,7 @@ int main()
 				hm.checkIn();
 			break;
 		case 3:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms data is not available.\nPlease add the rooms first.";
 				getch();
@@ -129,7 +129,7 @@ int main()
 				hm.getAvailRoom();
 			break;
 		case 4:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms are not available.\nPlease add the rooms first.";
 				getch();
@@ -142,7 +142,7 @@ int main()
 			}
 			break;
 		case 5:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms are not available.\nPlease add the rooms first.";
 				getch();

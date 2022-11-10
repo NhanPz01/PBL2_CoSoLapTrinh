@@ -15,14 +15,13 @@ void HotelMgnt::guestSummaryReport(Room rooms[], int& numberOfRoom)
 		class Customer cust = rooms[i].getCustomer();
 		if (rooms[i].getStatus() == 1)
 		{
-			cout << "\n Customer First Name : " << cust.getName();
+			cout << "\n Customer Full Name : " << cust.getName();
 			cout << "\n Room Number : " << rooms[i].getRoomNumber();
 			cout << "\n Address (only city) : " << cust.getAddress();
 			cout << "\n Phone : " << cust.getPhone();
 			cout << "\n---------------------------------------";
 		}
 	}
-
 	getch();
 }
 
@@ -57,34 +56,34 @@ void HotelMgnt::checkIn(Room rooms[], int& numberOfRoom)
 		cout << "\nEnter booking id: ";
 		cin >> booking_id;
         cust.setBookingId(booking_id);
-		cout << cust.getBookingId() << endl;
 
 		cout << "\nEnter Customer Name (Full Name): ";
 		cin.ignore();
 		getline(cin, name);
         cust.setName(name);
-		cout << cust.getName() << endl;
+
 		cout << "\nEnter Address (only city): ";
 		getline(cin, address);
         cust.setAddress(address);
-		cout << cust.getAddress() << endl;
+
 		cout << "\nEnter Phone: ";
 		cin >> phone;
         cust.setPhone(phone);
-		cout << cust.getPhone() << endl;
+
 		cout << "\nEnter From Date: ";
 		cin >> from_date;
         cust.setFromDate(from_date);
-		cout << cust.getFromDate() << endl;
+
 		cout << "\nEnter to  Date: ";
 		cin >> to_date;
         cust.setToDate(to_date);
-		cout << cust.getToDate() << endl;
+
 		cout << "\nEnter Advance Payment: ";
 		cin >> payment_advance;
         cust.setPaymentAdvance(payment_advance);
-		cout << cust.getPaymentAdvance() << endl;
+
 		rooms[i].setStatus(1);
+
 		rooms[i].setCustomer(cust);
 		cout << "\n Customer Checked-in Successfully..";
 		getch();
@@ -99,7 +98,8 @@ void HotelMgnt::getAvailRoom(Room rooms[], int& numberOfRoom)
 	{
 		if (rooms[i].getStatus() == 0)
 		{
-			displayRoom(rooms[i]);
+			cout << "\nRoom Number: \t" << rooms[i].getRoomNumber();
+			cout << "\nRent: " << rooms[i].getRent();
 			cout << "\n\nPress enter for next room";
 			found = 1;
 			getch();
@@ -118,7 +118,7 @@ void HotelMgnt::searchCustomer(Room rooms[], int& numberOfRoom, string pname)
 	int i, found = 0;
 	for (i = 0; i < numberOfRoom; i++)
 	{
-		class Customer cust = rooms[i].getCustomer();
+		Customer cust = rooms[i].getCustomer();
 		if ((rooms[i].getStatus() == 1) && (cust.getName() == pname))
 		{
 			cout << "\nCustomer Name: " << cust.getName();
@@ -137,10 +137,10 @@ void HotelMgnt::searchCustomer(Room rooms[], int& numberOfRoom, string pname)
 }
 
 // hotel managemt generates the bill of the expenses
-void HotelMgnt::checkOut(Room rooms[], int& numberOfRoom, int roomNum)
+void HotelMgnt::checkOut(Room rooms[], int& numberOfRoom, int &numberOfCustomer, int roomNum)
 {
 	int i, found = 0, days;
-	float billAmount = 0;
+	float bill = 0;
 	for (i = 0; i < numberOfRoom; i++)
 	{
 		if (rooms[i].getStatus() == 1 && rooms[i].getRoomNumber() == roomNum)
@@ -153,18 +153,20 @@ void HotelMgnt::checkOut(Room rooms[], int& numberOfRoom, int roomNum)
 	{
 		cout << "\nEnter Number of Days:\t";
 		cin >> days;
-		billAmount = days * rooms[i].getRent();
+		bill = days * rooms[i].getRent();
 
 		cout << "\n\t######## CheckOut Details ########\n";
 		cout << "\nCustomer Name : " << rooms[i].getCustomer().getName();
 		cout << "\nRoom Number : " << rooms[i].getRoomNumber();
 		cout << "\nAddress : " << rooms[i].getCustomer().getAddress();
 		cout << "\nPhone : " << rooms[i].getCustomer().getPhone();
-		cout << "\nTotal Amount Due : " << billAmount << " /";
+		cout << "\nTotal Amount Due : " << bill << " /";
 		cout << "\nAdvance Paid: " << rooms[i].getCustomer().getPaymentAdvance() << " /";
-		cout << "\n*** Total Payable: " << billAmount - rooms[i].getCustomer().getPaymentAdvance() << "/ only";
-
+		cout << "\n*** Total Payable: " << bill - rooms[i].getCustomer().getPaymentAdvance() << "/ only";
+		Customer cust;
+		rooms[i].setCustomer(cust);
 		rooms[i].setStatus(0);
+		numberOfCustomer--;
 	}
 	getch();
 }

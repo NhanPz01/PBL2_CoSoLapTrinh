@@ -38,7 +38,7 @@ void displayRoom(Room);
 
 //Global Declarations
 class Room rooms[max];
-int count=0;
+int roomCount=0;
 
 
 Room Room::addRoom(int rno)
@@ -64,7 +64,7 @@ return room;
 void Room::searchRoom(int rno)
 {
 int i,found=0;
-for(i=0;i<count;i++)
+for(i=0;i<roomCount;i++)
 {
 if(rooms[i].roomNumber==rno)
 {
@@ -116,10 +116,10 @@ void guestSummaryReport();
 
 void HotelMgnt::guestSummaryReport(){
 
-if(count==0){
+if(roomCount==0){
 	cout<<"\n No Guest in Hotel !!";
 }
-for(int i=0;i<count;i++)
+for(int i=0;i<roomCount;i++)
 {
 if(rooms[i].status==1)
 {
@@ -143,7 +143,7 @@ int i,found=0,rno;
 class Room room;
 cout<<"\nEnter Room number : ";
 cin>>rno;
-for(i=0;i<count;i++)
+for(i=0;i<roomCount;i++)
 {
 if(rooms[i].roomNumber==rno)
 {
@@ -194,7 +194,7 @@ getch();
 void HotelMgnt::getAvailRoom()
 {
 int i,found=0;
-for(i=0;i<count;i++)
+for(i=0;i<roomCount;i++)
 {
 if(rooms[i].status==0)
 {
@@ -216,7 +216,7 @@ getch();
 void HotelMgnt::searchCustomer(string *pname)
 {
 int i,found=0;
-for(i=0;i<count;i++)
+for(i=0;i<roomCount;i++)
 {
 if(rooms[i].status==1 && stricmp(rooms[i].cust.name,pname)==0)
 {
@@ -241,7 +241,7 @@ void HotelMgnt::checkOut(int roomNum)
 {
 int i,found=0,days,rno;
 float billAmount=0;
-for(i=0;i<count;i++)
+for(i=0;i<roomCount;i++)
 {
 if(rooms[i].status==1 && rooms[i].roomNumber==roomNum)
 {
@@ -296,7 +296,7 @@ case 1:
 cout<<"\nEnter Room Number: ";
 cin>>rno;
 i=0;
-for(i=0;i<count;i++)
+for(i=0;i<roomCount;i++)
 {
 if(rooms[i].roomNumber==rno)
 {
@@ -311,8 +311,8 @@ getch();
 }
 else
 {
-rooms[count]=room.addRoom(rno);
-count++;
+rooms[roomCount]=room.addRoom(rno);
+roomCount++;
 }
 break;
 case 2:
@@ -358,7 +358,7 @@ case 1:
 manageRooms();
 break;
 case 2:
-if(count==0)
+if(roomCount==0)
 {
 cout<<"\nRooms data is not available.\nPlease add the rooms first.";
 getch();
@@ -367,7 +367,7 @@ else
 hm.checkIn();
 break;
 case 3:
-if(count==0)
+if(roomCount==0)
 {
 cout<<"\nRooms data is not available.\nPlease add the rooms first.";
 getch();
@@ -376,7 +376,7 @@ else
 hm.getAvailRoom();
 break;
 case 4:
-if(count==0)
+if(roomCount==0)
 {
 cout<<"\nRooms are not available.\nPlease add the rooms first.";
 getch();
@@ -389,7 +389,7 @@ hm.searchCustomer(pname);
 }
 break;
 case 5:
-if(count==0)
+if(roomCount==0)
 {
 cout<<"\nRooms are not available.\nPlease add the rooms first.";
 getch();

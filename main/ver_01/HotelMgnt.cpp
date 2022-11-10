@@ -3,10 +3,10 @@
 using namespace std;
 
 void HotelMgnt::guestSummaryReport(const Room& rooms) {
-	if (count == 0) {
+	if (roomCount == 0) {
 		cout << "\n No Guest in Hotel !!";
 	}
-	for (int i = 0; i < count; i++) {
+	for (int i = 0; i < roomCount; i++) {
 		if (rooms[i].getStatus() == 1) {
 			cout << "\n Customer First Name : " << rooms[i].cust.getName();
 			cout << "\n Room Number : " << rooms[i].getRoomNumber();
@@ -26,7 +26,7 @@ void HotelMgnt::checkIn(Room& rooms) {
 	class Room room;
 	cout << "\nEnter Room number : ";
 	cin >> roomNumber;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].setRoomNumber() == roomNumber)
 		{
@@ -75,7 +75,7 @@ void HotelMgnt::checkIn(Room& rooms) {
 void HotelMgnt::getAvailRoom()
 {
 	int i, found = 0;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].status == 0)
 		{
@@ -96,7 +96,7 @@ void HotelMgnt::getAvailRoom()
 void HotelMgnt::searchCustomer(string *pname)
 {
 	int i, found = 0;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].status == 1 && stricmp(rooms[i].cust.name, pname) == 0)
 		{
@@ -120,7 +120,7 @@ void HotelMgnt::checkOut(int roomNum)
 {
 	int i, found = 0, days, roomNumber;
 	float billAmount = 0;
-	for (i = 0; i < count; i++)
+	for (i = 0; i < roomCount; i++)
 	{
 		if (rooms[i].status == 1 && rooms[i].roomNumber == roomNum)
 		{

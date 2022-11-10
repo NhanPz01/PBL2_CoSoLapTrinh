@@ -9,10 +9,11 @@ using namespace std;
 
 // Global Declarations
 class Room rooms[max];
-int count = 0; // number of room.
+int roomCount = 0;	   // number of room.
+int customerCount = 0; // number of customers.
 
 // managing rooms (adding and searching available rooms)
-void manageRooms(Room rooms[], int& numberOfRoom)
+void manageRooms(Room rooms[], int &numberOfRoom)
 {
 	class Room room;
 	int opt, roomNumber, i, flag = 0;
@@ -54,7 +55,7 @@ void manageRooms(Room rooms[], int& numberOfRoom)
 		case 2:
 			cout << "\nEnter room number: ";
 			cin >> roomNumber;
-			room.searchRoom(roomNumber, count, rooms);
+			room.searchRoom(roomNumber, roomCount, rooms);
 			break;
 		case 3:
 			// do nothing
@@ -66,7 +67,7 @@ void manageRooms(Room rooms[], int& numberOfRoom)
 	} while (opt != 3);
 }
 
-void getRoomsData(const string ROOMS, Room rooms[], int& numberOfRoom)
+void getRoomsData(const string ROOMS, Room rooms[], int &numberOfRoom)
 {
 	ifstream roomsFile;
 	roomsFile.open(ROOMS);
@@ -77,7 +78,8 @@ void getRoomsData(const string ROOMS, Room rooms[], int& numberOfRoom)
 	else
 	{
 		roomsFile >> numberOfRoom;
-		for (int i = 0; i < numberOfRoom; i++) {
+		for (int i = 0; i < numberOfRoom; i++)
+		{
 			class Room room;
 			string ac, type, stype;
 			int roomNumber, rent, status;
@@ -99,15 +101,19 @@ void getRoomsData(const string ROOMS, Room rooms[], int& numberOfRoom)
 	roomsFile.close();
 }
 
-void saveRoomsData(const string ROOMS, Room rooms[], int& numberOfRoom)
+void saveRoomsData(const string ROOMS, Room rooms[], int &numberOfRoom)
 {
 	ofstream roomsFile;
 	roomsFile.open(ROOMS);
-	if (!roomsFile.is_open()) {
+	if (!roomsFile.is_open())
+	{
 		cout << "Unable to save the rooms information" << endl;
-	} else {
+	}
+	else
+	{
 		roomsFile << numberOfRoom << endl;
-		for (int i = 0; i < numberOfRoom; i++) {
+		for (int i = 0; i < numberOfRoom; i++)
+		{
 			roomsFile << rooms[i].getRoomNumber() << endl;
 			roomsFile << rooms[i].getAc() << endl;
 			roomsFile << rooms[i].getType() << endl;
@@ -119,8 +125,88 @@ void saveRoomsData(const string ROOMS, Room rooms[], int& numberOfRoom)
 	roomsFile.close();
 }
 
-void getGuestsData(const string GUEST) {
+void getCustomersData(const string CUSTOMERS, Room rooms[], int &numberOfCustomers, int &numberOfRoom)
+{
+	ifstream customersFile;
+	customersFile.open(CUSTOMERS);
+	if (!customersFile.is_open())
+	{
+		cout << "Unable to get customers data" << endl;
+	}
+	else
+	{
+		customersFile >> numberOfCustomers;
+		for (int i = 0; i < numberOfCustomers; i++)
+		{
+			Customer cust;
+			string name, address, phone, from_date, to_date;
+			int roomNumber, booking_id;
+			float payment_advance;
+			customersFile >> roomNumber;
+			for (int j = 0; j < numberOfRoom; j++)
+			{
+				if ((j + 1) == roomNumber)
+				{
+					rooms[j].setStatus(1);
+					customersFile >> booking_id;
+					cust.setBookingId(booking_id);
 
+					customersFile.ignore();
+					getline(customersFile, name);
+					cust.setName(name);
+
+					getline(customersFile, address);
+					cust.setAddress(address);
+
+					customersFile >> phone;
+					cust.setPhone(phone);
+
+					customersFile >> from_date;
+					cust.setFromDate(from_date);
+
+					customersFile >> to_date;
+					cust.setToDate(to_date);
+
+					customersFile >> payment_advance;
+					cust.setPaymentAdvance(payment_advance);
+
+					rooms[j].setCustomer(cust);
+				}
+			}
+		}
+	}
+	customersFile.close();
+}
+
+void saveCustomersData(const string CUSTOMERS, Room rooms[], int &numberOfCustomer, int &numberOfRoom)
+{
+	ofstream customersFile;
+	customersFile.open(CUSTOMERS);
+	if (!customersFile.is_open())
+	{
+		cout << "Unable to save the customers data" << endl;
+	}
+	else
+	{
+		customersFile << numberOfCustomer << endl;
+		for (int i = 0; i <= numberOfCustomer; i++)
+		{
+			Customer cust = rooms[i].getCustomer();
+			if (rooms[i].getStatus() == 1)
+			{
+				rooms[i].setStatus(0);
+				customersFile << rooms[i].getRoomNumber() << endl;
+				customersFile << cust.getBookingId() << endl;
+				customersFile << cust.getName() << endl;
+				customersFile << cust.getAddress() << endl;
+				customersFile << cust.getPhone() << endl;
+				customersFile << cust.getFromDate() << endl;
+				customersFile << cust.getToDate() << endl;
+				customersFile << cust.getPaymentAdvance() << endl;
+			}
+		}
+	}
+	customersFile.close();
 }
 
 using namespace std;
@@ -128,7 +214,10 @@ int main()
 {
 	string const ROOMS = "rooms.txt";
 	string const ROOMSSAVE = "rooms.txt";
-	getRoomsData(ROOMS, rooms, count);
+	string const CUSTOMERS = "customers.txt";
+	string const CUSTOMERSSAVE = "customers.txt";
+	getRoomsData(ROOMS, rooms, roomCount);
+	getCustomersData(CUSTOMERS, rooms, customerCount, roomCount);
 	class HotelMgnt hotelManagement;
 	int i, j, opt, rno;
 	string pname;
@@ -151,28 +240,28 @@ int main()
 		switch (opt)
 		{
 		case 1:
-			manageRooms(rooms, count);
+			manageRooms(rooms, roomCount);
 			break;
 		case 2:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms data is not available.\nPlease add the rooms first.";
 				getch();
 			}
 			else
-				hotelManagement.checkIn(rooms, count);
+				hotelManagement.checkIn(rooms, roomCount);
 			break;
 		case 3:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms data is not available.\nPlease add the rooms first.";
 				getch();
 			}
 			else
-				hotelManagement.getAvailRoom(rooms, count);
+				hotelManagement.getAvailRoom(rooms, roomCount);
 			break;
 		case 4:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms are not available.\nPlease add the rooms first.";
 				getch();
@@ -182,11 +271,11 @@ int main()
 				cout << "Enter Customer Name: ";
 				cin.ignore();
 				getline(cin, pname);
-				hotelManagement.searchCustomer(rooms, count, pname);
+				hotelManagement.searchCustomer(rooms, roomCount, pname);
 			}
 			break;
 		case 5:
-			if (count == 0)
+			if (roomCount == 0)
 			{
 				cout << "\nRooms are not available.\nPlease add the rooms first.";
 				getch();
@@ -195,14 +284,15 @@ int main()
 			{
 				cout << "Enter Room Number : ";
 				cin >> rno;
-				hotelManagement.checkOut(rooms, count, rno);
+				hotelManagement.checkOut(rooms, roomCount, customerCount, rno);
 			}
 			break;
 		case 6:
-			hotelManagement.guestSummaryReport(rooms, count);
+			hotelManagement.guestSummaryReport(rooms, roomCount);
 			break;
 		case 7:
-			saveRoomsData(ROOMSSAVE, rooms, count);
+			saveRoomsData(ROOMSSAVE, rooms, roomCount);
+			saveCustomersData(CUSTOMERSSAVE, rooms, customerCount, roomCount);
 			cout << "\nTHANK YOU! FOR USING SOFTWARE";
 			break;
 		default:
