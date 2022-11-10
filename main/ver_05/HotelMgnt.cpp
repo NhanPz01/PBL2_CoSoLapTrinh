@@ -85,54 +85,9 @@ void HotelMgnt::checkIn(Room rooms[], int& numberOfRoom)
         cust.setPaymentAdvance(payment_advance);
 		cout << cust.getPaymentAdvance() << endl;
 		rooms[i].setStatus(1);
-		
+		rooms[i].setCustomer(cust);
 		cout << "\n Customer Checked-in Successfully..";
 		getch();
-		//----------------------------------------------------------------
-        /*string name, address, phone, from_date, to_date;
-        int booking_id;
-        float payment_advance;
-		cout << "\nEnter booking id: ";
-		cin >> booking_id;
-        rooms[i].getCustomer().setBookingId(booking_id);
-        //rooms[i].getCustomer().setBookingId(booking_id);
-		cout << rooms[i].getCustomer().getBookingId() << endl;
-
-		cout << "\nEnter Customer Name (Full Name): ";
-		cin.ignore();
-		getline(cin, name);
-        rooms[i].setCustomer().setName(name);
-        //rooms[i].getCustomer().setName(name);
-		cout << rooms[i].getCustomer().getName() << endl;
-		cout << "\nEnter Address (only city): ";
-		getline(cin, address);
-        rooms[i].getCustomer().setAddress(address);
-        //rooms[i].getCustomer().setAddress(address);
-		cout << rooms[i].getCustomer().getAddress() << endl;
-		cout << "\nEnter Phone: ";
-		cin >> phone;
-        rooms[i].getCustomer().setPhone(phone);
-        //rooms[i].getCustomer().setPhone(phone);
-		cout << rooms[i].getCustomer().getPhone() << endl;
-		cout << "\nEnter From Date: ";
-		cin >> from_date;
-        rooms[i].getCustomer().setFromDate(from_date);
-        //rooms[i].getCustomer().setFromDate(from_date);
-		cout << rooms[i].getCustomer().getFromDate() << endl;
-		cout << "\nEnter to  Date: ";
-		cin >> to_date;
-        rooms[i].getCustomer().setToDate(to_date);
-        //rooms[i].getCustomer().setToDate(to_date);
-		cout << rooms[i].getCustomer().getToDate() << endl;
-		cout << "\nEnter Advance Payment: ";
-		cin >> payment_advance;
-        rooms[i].getCustomer().setPaymentAdvance(payment_advance);
-        //rooms[i].getCustomer().setPaymentAdvance(payment_advance);
-		cout << rooms[i].getCustomer().getPaymentAdvance() << endl;
-		rooms[i].setStatus(1);
-
-		cout << "\n Customer Checked-in Successfully..";
-		getch();*/
 	}
 }
 
