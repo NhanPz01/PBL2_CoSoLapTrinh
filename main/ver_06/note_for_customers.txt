@@ -1,0 +1,11 @@
+line 1 -> number of customers
+~ the 9 lines after the 1 line is a customers's info
+-> no. of room
+-> booking ID
+-> full name
+-> address
+-> phone number
+-> from date
+-> to date
+-> payment amount
+~

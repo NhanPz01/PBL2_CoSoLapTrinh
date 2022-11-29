@@ -1,0 +1,9 @@
+line 1 -> number of room in rooms
+~the 6 lines after the 1 line is room
+-> no. of room
+-> ac (A/N)
+-> type (S/N)
+-> size type (B/S)
+-> daily rent
+-> status
+~
