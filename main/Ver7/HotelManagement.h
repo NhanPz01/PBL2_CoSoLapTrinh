@@ -1,12 +1,13 @@
 #include "Customer.h"
 #include "Room.h"
 #include <vector>
+template <typename T>
 class Management{
-    vector<Room*> rooms;
-    vector<Customer*> customers;
+    Room rooms;
+    Customer customers;
     public:
         Management();
-        Management(Room*, Customer*);
+        Management(Room&, Customer&);
         ~Management();
 
         void setRoom(Room&,int);
