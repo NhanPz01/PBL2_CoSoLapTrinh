@@ -12,7 +12,7 @@ private:
 
 public:
     Room();
-    // Room(bool, int, double, bool, Customer);
+    Room(bool, int, double, bool);
     ~Room();
     void setType(bool);
     void setRoomNumber(int);
