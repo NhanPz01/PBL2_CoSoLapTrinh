@@ -10,6 +10,16 @@ Customer::Customer(string name, string address, string phone, string from_date, 
 Customer::~Customer(){
 }
 
+Customer::Customer(Customer& c){
+    this->name = c.name;
+    this->address = c.address;
+    this->phone = c.phone;
+    this->from_date = c.from_date;
+    this->to_date = c.to_date;
+    this->advance_payment = c.advance_payment;
+    this->booking_id = c.booking_id;
+}
+
 void Customer::setName(string name){
     this->name = name;
 }
@@ -82,4 +92,14 @@ istream& operator>>(istream& i, Customer& c){
     i >> id;
     c.setBookingId(id);
     return i;
+}
+Customer Customer::operator=(const Customer& c){
+    this->name = c.name;
+    this->address = c.address;
+    this->phone = c.phone;
+    this->from_date = c.from_date;
+    this->to_date = c.to_date;
+    this->advance_payment = c.advance_payment;
+    this->booking_id = c.booking_id;
+    return *this;
 }

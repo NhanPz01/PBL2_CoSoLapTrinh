@@ -55,6 +55,14 @@ istream& operator>>(istream &i, Room& r){
 	return i;
 }
 
+Room Room::operator=(const Room& r){
+	this->status = r.status;
+	this->roomNumber = r.roomNumber;
+	this->rent = r.rent;
+	this->type = r.type;
+	return *this;
+}
+
 
 
 

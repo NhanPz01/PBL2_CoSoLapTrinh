@@ -16,6 +16,7 @@ private:
 public:
     Customer();
     Customer(string,string,string,string,string,double,int);
+    Customer(Customer&);
     ~Customer();
     void setName(string);
     void setAddress(string);
@@ -35,4 +36,5 @@ public:
 
     friend ostream& operator<<(ostream&, const Customer&);
     friend istream& operator>>(istream&, Customer&);
+    Customer operator=(const Customer&);
 };

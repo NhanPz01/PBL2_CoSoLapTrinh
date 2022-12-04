@@ -1,10 +1,13 @@
 
-#include "HotelManagement.h"
+#include "HotelMng.h"
 #include <iostream>
 using namespace std;
 int main(){
-    Room a(1,10,190.2,1);
     Customer b("Nigeria","Niggeria","0101000101010","1/1/1","2/2/2",22020,1234231);
-    Management c(&a,&b);
-    c.print();
+    Customer a;
+    Room c(1,1,1,1);
+    Room d;
+    d=c;
+    a = b;
+    cout << a << d;
 }

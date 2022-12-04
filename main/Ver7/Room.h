@@ -25,4 +25,5 @@ public:
 
     friend ostream &operator<<(ostream &, const Room &);
     friend istream &operator>>(istream &, Room &);
+    Room operator=(const Room&);
 };
