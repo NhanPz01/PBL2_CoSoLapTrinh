@@ -1,3 +1,4 @@
+#include "Customer.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -8,6 +9,7 @@ private:
     int roomNumber;
     double rent;
     bool type;
+    Customer *customer;
 
 public:
     Room();
@@ -17,11 +19,13 @@ public:
     void setRoomNumber(int);
     void setRent(double);
     void setStatus(bool);
+    void setCustomer(Customer*);
 
     bool getType() const;
     int getRoomNumber() const;
     double getRent() const;
     bool getStatus() const;
+    Customer getCustomer() ;
 
     friend ostream &operator<<(ostream &, const Room &);
     friend istream &operator>>(istream &, Room &);

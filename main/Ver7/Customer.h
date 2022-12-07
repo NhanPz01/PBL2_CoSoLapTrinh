@@ -34,6 +34,8 @@ public:
     double getAdvancePayment() const;
     int getBookingId() const;
 
+    void update();
+
     friend ostream& operator<<(ostream&, const Customer&);
     friend istream& operator>>(istream&, Customer&);
     Customer operator=(const Customer&);

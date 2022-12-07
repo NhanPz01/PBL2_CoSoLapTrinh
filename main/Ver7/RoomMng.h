@@ -8,8 +8,10 @@ public:
     void add();
     void add(Room*);
     void remove(int);
-    // void sort();
     void printAll();
     void printAvailable();
+    // void printBy()
     void updateRoom(int);
+    void addCust(int);
+    void addCust(int, Customer);
 };

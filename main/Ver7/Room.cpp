@@ -20,6 +20,10 @@ double Room::getRent() const{
 	return this->rent;
 }
 
+Customer Room::getCustomer() {
+	return *this->customer;
+}
+
 void Room::setRoomNumber(int n){
 	this->roomNumber = n;
 }
@@ -33,13 +37,23 @@ void Room::setRent(double p){
 	this->rent = p;
 }
 
+void Room::setCustomer(Customer *customer){
+	this->customer = customer;
+}
+
 ostream& operator<<(ostream &o, const Room& r){
-	o << "Room number: " << r.getRoomNumber() << "\nRoom status: " << r.getStatus() << "\nRoom type: " <<  r.getType() << "\nRoom rent: " <<  r.getRent() << endl;
+	o << "Room number: " << r.getRoomNumber()
+	  << "\nRoom status: " << r.getStatus()
+	  << "\nRoom type: " <<  r.getType()
+	  << "\nRoom rent: " <<  r.getRent()
+	  << "\nCustomer in room: " << r.customer
+	  << endl;
 	return o;
 }
 
 istream& operator>>(istream &i, Room& r){
 	int n; bool s,t; double p;
+	Customer tempCustomer;
 	cout << "Room number: ";
 	i >> n;
 	r.setRoomNumber(n);
@@ -52,6 +66,8 @@ istream& operator>>(istream &i, Room& r){
 	cout << "Room rent: ";
 	i >> p;
 	r.setRent(p);
+	i >> tempCustomer;
+	r.setCustomer(&tempCustomer);
 	return i;
 }
 
@@ -60,11 +76,6 @@ Room Room::operator=(const Room& r){
 	this->roomNumber = r.roomNumber;
 	this->rent = r.rent;
 	this->type = r.type;
+	this->customer = r.customer;
 	return *this;
 }
-
-
-
-
-
-

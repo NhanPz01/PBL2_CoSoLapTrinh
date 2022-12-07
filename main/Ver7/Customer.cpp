@@ -7,9 +7,6 @@ Customer::Customer(string name, string address, string phone, string from_date, 
     : name(name), address(address), phone(phone), from_date(from_date), to_date(to_date), advance_payment(advance_payment), booking_id(booking_id) {
 }
 
-Customer::~Customer(){
-}
-
 Customer::Customer(Customer& c){
     this->name = c.name;
     this->address = c.address;
@@ -18,6 +15,9 @@ Customer::Customer(Customer& c){
     this->to_date = c.to_date;
     this->advance_payment = c.advance_payment;
     this->booking_id = c.booking_id;
+}
+
+Customer::~Customer(){
 }
 
 void Customer::setName(string name){
@@ -102,4 +102,68 @@ Customer Customer::operator=(const Customer& c){
     this->advance_payment = c.advance_payment;
     this->booking_id = c.booking_id;
     return *this;
+}
+void Customer::update()
+{
+    int s;
+    cout << "Khach Hang" << endl;
+    cout << "1. Ten Khach" << endl;
+    cout << "2. Dia Chi" << endl;
+    cout << "3. So Dien Thoai" << endl;
+    cout << "4. Ngay Dat Phong" << endl;
+    cout << "5. Ngay Tra Phong" << endl;
+    cout << "6. Tien Dat Coc" << endl;
+    cout << "7. BookingID" << endl;
+    cin >> s;
+    switch (s)
+    {
+    case 1:
+    {
+        cout << "Ten Khach : ";
+        cin.ignore();
+        getline(cin, this->name);
+        break;
+    }
+
+    case 2:
+    {
+        cout << "Dia Chi se duoc doi ve: ";
+        cin.ignore();
+        getline(cin, this->address);
+        break;
+    }
+    case 3:
+    {
+        cout << "So Dien Thoai se duoc doi ve: ";
+        cin.ignore();
+        getline(cin, this->phone);
+        break;
+    }
+    case 4:
+    {
+        cout << "Ngay Dat Phong se duoc doi ve: ";
+        cin.ignore();
+        getline(cin, this->from_date);
+        break;
+    }
+    case 5:
+    {
+        cout << "Ngay Tra Phong se duoc doi ve: ";
+        cin.ignore();
+        getline(cin, this->to_date);
+        break;
+    }
+    case 6:
+    {
+        cout << "Tien Dat Coc se duoc doi ve: ";
+        cin >> this->advance_payment;
+        break;
+    }
+    case 7:
+    {
+        cout << "Booking ID se duoc doi ve: ";
+        cin >> this->booking_id;
+        break;
+    }
+    }
 }
