@@ -35,6 +35,7 @@ public:
     int getBookingId() const;
 
     void update();
+    void rev();
 
     friend ostream& operator<<(ostream&, const Customer&);
     friend istream& operator>>(istream&, Customer&);

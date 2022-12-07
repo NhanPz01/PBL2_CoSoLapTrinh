@@ -1,8 +1,11 @@
 #include "Room.h"
+Customer PHONG_TRONG("Chua co","Chua co","Chua co","Chua co","Chua co",0,0);
 Room::Room(){
+	    this->customer = &PHONG_TRONG;
 }
 Room::Room(bool status, int roomNumber, double rent, bool type)
 	: status(status), roomNumber(roomNumber), rent(rent), type(type) {
+		this->customer = &PHONG_TRONG;
 }
 Room::~Room(){
 }
@@ -82,4 +85,8 @@ Room Room::operator=(const Room& r){
 
 void Room::addCust(Customer *cust){
 	this->customer = cust;
+}
+
+void Room::removeCust(){
+	this->customer = &PHONG_TRONG;
 }

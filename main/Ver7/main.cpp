@@ -2,15 +2,13 @@
 #include <iostream>
 using namespace std;
 int main(){
-    Customer b("Nigeria","Niggeria","0101000101010","1/1/1","2/2/2",22020,1234231);
-    Customer a;
+
+    Customer *b = new Customer("Nigeria","Niggeria","0101000101010","1/1/1","2/2/2",22020,1234231);
+    Customer *a = new Customer("Namdz","Niggeria","0101000101010","1/1/1","2/2/2",22020,1234231);
     Room c(1,1,1,1);
     Room d;
+    c.addCust(b);
+    c.removeCust();
     RoomMng Main;
-    c.addCust(&b);
-    d=c;
-    a = b;
-    Main.add(&c);
-    Main.add(&d);
-    Main.printAll();
+    cout << c;
 }
