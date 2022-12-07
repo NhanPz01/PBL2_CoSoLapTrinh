@@ -46,7 +46,7 @@ ostream& operator<<(ostream &o, const Room& r){
 	  << "\nRoom status: " << r.getStatus()
 	  << "\nRoom type: " <<  r.getType()
 	  << "\nRoom rent: " <<  r.getRent()
-	  << "\nCustomer in room: " << r.customer
+	  << "\nCustomer in room: " << *(r.customer)
 	  << endl;
 	return o;
 }
@@ -78,4 +78,8 @@ Room Room::operator=(const Room& r){
 	this->type = r.type;
 	this->customer = r.customer;
 	return *this;
+}
+
+void Room::addCust(Customer *cust){
+	this->customer = cust;
 }

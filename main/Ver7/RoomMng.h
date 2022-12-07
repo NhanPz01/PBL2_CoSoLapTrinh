@@ -12,6 +12,6 @@ public:
     void printAvailable();
     // void printBy()
     void updateRoom(int);
-    void addCust(int);
-    void addCust(int, Customer);
+    // void addCust(int);
+    void addCust(int, Customer*);
 };

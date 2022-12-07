@@ -7,11 +7,10 @@ int main(){
     Room c(1,1,1,1);
     Room d;
     RoomMng Main;
+    c.addCust(&b);
     d=c;
     a = b;
     Main.add(&c);
     Main.add(&d);
-    // Main.addCust(0);
-    Main.addCust(1,b);
     Main.printAll();
 }

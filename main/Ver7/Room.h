@@ -26,7 +26,8 @@ public:
     double getRent() const;
     bool getStatus() const;
     Customer getCustomer() ;
-
+    
+    void addCust(Customer*);
     friend ostream &operator<<(ostream &, const Room &);
     friend istream &operator>>(istream &, Room &);
     Room operator=(const Room&);

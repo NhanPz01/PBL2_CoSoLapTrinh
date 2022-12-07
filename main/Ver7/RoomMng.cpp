@@ -69,9 +69,9 @@ void RoomMng::updateRoom(int index)
     }
 }
 }
-void RoomMng::addCust(int index){
-    (*this->manage[index]).getCustomer().update();
-}
-void RoomMng::addCust(int index, Customer customer){
-    (*this->manage[index]).getCustomer() = customer;
-}
+// void RoomMng::addCust(int index){
+//     (*this->manage[index]).getCustomer().update();
+// }
+// void RoomMng::addCust(int index, Customer* customer){
+//     (*this->manage[index]).getCustomer() = customer;
+// }
