@@ -14,6 +14,7 @@ private:
 public:
     Room();
     Room(bool, int, double, bool);
+    Room(bool, int, double, bool, Customer*);
     ~Room();
     void setType(bool);
     void setRoomNumber(int);

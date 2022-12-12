@@ -65,27 +65,27 @@ int Customer::getBookingId() const{
 }
 
 ostream& operator<<(ostream& o, const Customer& c){
-    o << "\nTen: " << c.getName() << "\nDiaChi: " << c.getAddress() << "\nNgayCheckIn: " << c.getFromDate() << "\nNgayCheckOut: " << c.getToDate() << "\nTienCoc: " << c.getAdvancePayment() << "\nID: " << c.getBookingId() << endl;
+    o << "\nHo va Ten: " << c.getName() << "\nDia Chi: " << c.getAddress() << "\nNgay Check In: " << c.getFromDate() << "\nNgay Check Out: " << c.getToDate() << "\nTien Coc: " << c.getAdvancePayment() << "\nID: " << c.getBookingId() << endl;
     return o;
 }
 istream& operator>>(istream& i, Customer& c){
     string n,a,p,fd,td; double ap; int id;
-	cout << "\nTen: ";
+	cout << "\nHo va Ten: ";
     getline(i, n);
     c.setName(n);
-    cout << "\nDiaChi: ";
+    cout << "\nDia Chi: ";
     getline(i, a);
     c.setAddress(a);
     cout << "\nSDT: ";
     getline(i, p);
     c.setPhone(p);
-    cout << "\nNgayCheckIn: ";
+    cout << "\nNgay Check In: ";
     getline(i, fd);
     c.setFromDate(fd);
-    cout << "\nNgayCheckOut: ";
+    cout << "\nNgay Check Out: ";
     getline(i, td);
     c.setToDate(td);
-    cout << "\nTienCoc: ";
+    cout << "\nTien Coc: ";
     i >> ap;
     c.setAdvancePayment(ap);
     cout << "\nID: ";
