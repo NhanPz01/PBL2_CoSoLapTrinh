@@ -25,6 +25,14 @@ void RoomMng::remove(int index)
 
     (this->manage).erase((this->manage).begin() + index);
 }
+void RoomMng::removeFirst()
+{
+    remove(0);
+}
+void RoomMng::removeLast()
+{
+    remove(this->manage.size() - 1);
+}
 void RoomMng::printAll()
 {
     drawaline();
@@ -34,6 +42,10 @@ void RoomMng::printAll()
         cout << endl
              << *(this->manage[i]);
     drawaline();
+}
+void RoomMng::printRoom(int index){
+    cout << endl
+         << "Phong can tim la: " << *(this->manage[index]);
 }
 void RoomMng::printAvailable()
 {
@@ -91,9 +103,24 @@ void RoomMng::updateRoom(int index)
     }
     }
 }
-// void RoomMng::addCust(int index){
-//     (*this->manage[index]).getCustomer().update();
-// }
-// void RoomMng::addCust(int index, Customer* customer){
-//     (*this->manage[index]).getCustomer() = customer;
-// }
+int RoomMng::interpolationSearch(int x)
+{   
+    if ((*this->manage[0]).getRoomNumber() == x) return 0;
+    int lo = 0, hi = (this->manage.size());
+    while (lo <= hi && x >= (*this->manage[lo]).getRoomNumber() && x <= (*this->manage[hi]).getRoomNumber())
+    {
+        if (lo == hi)
+        {
+            if ((*this->manage[lo]).getRoomNumber() == x) return lo;
+            return -1;
+        }
+        int pos = lo + (((double)(hi - lo) /
+            ((*this->manage[hi]).getRoomNumber() - (*this->manage[lo]).getRoomNumber())) * (x - (*this->manage[lo]).getRoomNumber()));
+        if ((*this->manage[pos]).getRoomNumber() == x)
+            return pos;
+        if ((*this->manage[pos]).getRoomNumber() < x)
+            lo = pos + 1;
+        else
+            hi = pos - 1;
+    }
+    return -1;}
