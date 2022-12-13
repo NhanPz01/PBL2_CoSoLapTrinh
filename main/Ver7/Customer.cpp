@@ -71,6 +71,7 @@ ostream& operator<<(ostream& o, const Customer& c){
 istream& operator>>(istream& i, Customer& c){
     string n,a,p,fd,td; double ap; int id;
 	cout << "\nHo va Ten: ";
+    cin.ignore();
     getline(i, n);
     c.setName(n);
     cout << "\nDia Chi: ";

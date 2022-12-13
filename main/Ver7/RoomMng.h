@@ -7,6 +7,9 @@ private:
 public:
     void add();
     void add(Room*);
+    void getRoomData(const string, const string);
+    void saveRoomData(const string);
+    void saveCustomersData(const string);
     void remove(int);
     void removeFirst();
     void removeLast();

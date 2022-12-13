@@ -1,0 +1,57 @@
+8
+Nam
+Da Nang
+19999
+12
+32
+2000
+10
+Bao Nhan
+Da Nang
+12312
+12
+32
+2000
+10
+Duy
+Dang
+1
+1
+1
+1
+10
+Chua co
+Chua co
+Chua
+co
+Chua
+0
+10
+Chua co
+Chua co
+Chua
+co
+Chua
+0
+10
+Chua co
+Chua co
+Chua
+co
+Chua
+0
+10
+Chua co
+Chua co
+Chua
+co
+Chua
+0
+10
+Chua co
+Chua co
+Chua
+co
+Chua
+0
+10

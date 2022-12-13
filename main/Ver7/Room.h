@@ -21,12 +21,13 @@ public:
     void setRent(double);
     void setStatus(bool);
     void setCustomer(Customer*);
+    void setEmptyRoom();
 
     bool getType() const;
     int getRoomNumber() const;
     double getRent() const;
     bool getStatus() const;
-    Customer getCustomer() ;
+    Customer getCustomer();
     void removeCustomer();
     
     void addCust(Customer*);

@@ -1,6 +1,10 @@
 #include "Room.h"
 Room TestRoom(1, 1, 1, 1);
 Customer PHONG_TRONG("Chua co", "Chua co", "Chua co", "Chua co", "Chua co", 0, 0);
+void Room::setEmptyRoom(){
+	this->customer = &PHONG_TRONG;
+
+}
 Room::Room()
 {
 	this->customer = &PHONG_TRONG;
@@ -79,7 +83,7 @@ ostream &operator<<(ostream &o, const Room &r)
 	else
 		cout << "Phong gia dinh";
 	o << "\nTien Phong: " << r.getRent()
-	  << "\nKhach Dat Phong: " << *(r.customer)
+	  << "\nKhach Dat Phong: " << (*r.customer)
 	  << endl ;
 	return o;
 }
@@ -89,7 +93,7 @@ istream &operator>>(istream &i, Room &r)
 	int n;
 	bool s, t;
 	double p;
-	Customer tempCustomer;
+	Customer *tempCustomer = new Customer;
 	cout << "Vui Long Nhap So Phong: ";
 	i >> n;
 	r.setRoomNumber(n);
@@ -102,8 +106,8 @@ istream &operator>>(istream &i, Room &r)
 	cout << "Tien Phong: ";
 	i >> p;
 	r.setRent(p);
-	i >> tempCustomer;
-	r.setCustomer(&tempCustomer);
+	i >> *tempCustomer;
+	r.setCustomer(tempCustomer);
 	return i;
 }
 
