@@ -16,11 +16,13 @@ public:
     void printAll();
     void printRoom(int);
     void printAvailable();
-    void Sort();
+    void Sort(int,int);
     int interpolationSearch(int);
     // void printBy()
     void updateRoom(int);
     // void addCust(int);
     void addCust(int, Customer*);
     void printBy();
+    int partition(int, int);
+    int getSize();
 };

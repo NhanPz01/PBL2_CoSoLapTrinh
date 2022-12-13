@@ -14,9 +14,10 @@ int main(){
     // cout << a;
     RoomMng a;
     a.getRoomData(ROOMS, CUSTOMERS);
+    a.Sort(0,a.getSize()-1);
     a.printAll();
-    a.saveRoomData(ROOMSSAVE);
-    a.saveCustomersData(CUSTOMERSSAVE);
+    // a.saveRoomData(ROOMSSAVE);
+    // a.saveCustomersData(CUSTOMERSSAVE);
     
 
 
