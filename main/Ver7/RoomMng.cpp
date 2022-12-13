@@ -138,18 +138,18 @@ void RoomMng::add(Room *n)
 {
     this->manage.push_back(n);
 }
-void RoomMng::remove(int index)
+void RoomMng::removeAt(int index)
 {
 
     (this->manage).erase((this->manage).begin() + index);
 }
 void RoomMng::removeFirst()
 {
-    remove(0);
+    removeAt(0);
 }
 void RoomMng::removeLast()
 {
-    remove(this->manage.size() - 1);
+    removeAt(this->manage.size() - 1);
 }
 void RoomMng::printAll()
 {
@@ -374,6 +374,9 @@ void RoomMng::Sort(int low, int high)
         Sort(low, pi - 1);
         Sort(pi + 1, high);
     }
+}
+void RoomMng::Sort(){
+    Sort(0, manage.size()-1);
 }
 
 int RoomMng::getSize(){

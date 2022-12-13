@@ -1,11 +1,4 @@
 8
-Nam
-Da Nang
-19999
-12
-32
-2000
-10
 Bao Nhan
 Da Nang
 12312
@@ -20,6 +13,13 @@ Dang
 1
 1
 10
+Nam
+Da Nang
+19999
+12
+32
+2000
+10
 Chua co
 Chua co
 Chua
@@ -27,7 +27,7 @@ co
 Chua
 0
 10
-Chua co
+Co Roi
 Chua co
 Chua
 co

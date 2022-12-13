@@ -10,13 +10,14 @@ public:
     void getRoomData(const string, const string);
     void saveRoomData(const string);
     void saveCustomersData(const string);
-    void remove(int);
+    void removeAt(int);
     void removeFirst();
     void removeLast();
     void printAll();
     void printRoom(int);
     void printAvailable();
     void Sort(int,int);
+    void Sort();
     int interpolationSearch(int);
     // void printBy()
     void updateRoom(int);
