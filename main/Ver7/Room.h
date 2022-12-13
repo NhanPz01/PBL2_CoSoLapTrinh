@@ -30,6 +30,7 @@ public:
     Customer getCustomer();
     void removeCustomer();
     
+    void statusCheck();
     void addCust(Customer*);
     void removeCust();
     friend ostream &operator<<(ostream &, const Room &);

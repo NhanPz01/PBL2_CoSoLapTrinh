@@ -8,6 +8,7 @@ void Room::setEmptyRoom(){
 Room::Room()
 {
 	this->customer = &PHONG_TRONG;
+	this->status = false;
 }
 
 Room::Room(bool status, int roomNumber, double rent, bool type)
@@ -108,6 +109,7 @@ istream &operator>>(istream &i, Room &r)
 	r.setRent(p);
 	i >> *tempCustomer;
 	r.setCustomer(tempCustomer);
+	r.statusCheck();
 	return i;
 }
 
@@ -124,9 +126,18 @@ Room Room::operator=(const Room &r)
 void Room::addCust(Customer *cust)
 {
 	this->customer = cust;
+	this->status = true;
 }
 
 void Room::removeCust()
 {
 	this->customer = &PHONG_TRONG;
+}
+
+void Room::statusCheck(){
+	if((*this->customer).getName()== "Chua co")
+		this->status = false;
+	else if((*this->customer).getName()== "")
+		this->status = false;
+	else this->status =	true;
 }

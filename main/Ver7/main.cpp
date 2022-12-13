@@ -18,8 +18,4 @@ int main(){
     a.printAll();
     a.saveRoomData(ROOMSSAVE);
     a.saveCustomersData(CUSTOMERSSAVE);
-    
-
-
-
 }
