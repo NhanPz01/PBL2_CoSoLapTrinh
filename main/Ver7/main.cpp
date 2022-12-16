@@ -18,5 +18,4 @@ int main(){
     a.printAll();
     a.checkIn();
     a.saveRoomData(ROOMSSAVE);
-    a.saveCustomersData(CUSTOMERSSAVE);
-}
+    a.saveCustomersData(CUSTOMERSSAVE);}

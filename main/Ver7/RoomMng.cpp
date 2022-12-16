@@ -226,7 +226,7 @@ int RoomMng::interpolationSearch(int x)
 {
     if ((*this->manage[0]).getRoomNumber() == x)
         return 0;
-    int lo = 0, hi = (this->manage.size());
+    int lo = 0, hi = (this->manage.size())-1;
     while (lo <= hi && x >= (*this->manage[lo]).getRoomNumber() && x <= (*this->manage[hi]).getRoomNumber())
     {
         if (lo == hi)
@@ -403,7 +403,7 @@ void RoomMng::checkIn()
         {
             cout << "Nhap lai : ";
             cin >> sp;
-            location = interpolationSearch(sp);
+            location = this->interpolationSearch(sp);
         }
     }
     Customer *cust = new Customer();
