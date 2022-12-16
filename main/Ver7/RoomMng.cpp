@@ -69,9 +69,9 @@ void RoomMng::getRoomData(const string ROOMS, const string CUSTOMERS)
             (*room).setRent(rent);
             roomsFile >> type;
             (*room).setType(type);
-            if (i < numberOfCustomers) 
+            if (i < numberOfCustomers)
                 (*room).setCustomer(customers[i]);
-                
+
             else (*room).setEmptyRoom();
             this->manage.push_back(room);
         }
@@ -88,8 +88,8 @@ void RoomMng::saveRoomData(const string ROOMS){
 		cout << "Unable to save the rooms information" << endl;
 	}
 	else
-	{   
-        
+	{
+
 		roomsFile << manage.size() << endl;
 		for (int i = 0; i < manage.size(); i++)
 		{
@@ -344,7 +344,7 @@ void RoomMng::printBy()
 //     *a = *b;
 //     *b = t;
 // }
-  
+
 /* This function takes last element as pivot, places
 the pivot element at its correct position in sorted
 array, and places all smaller (smaller than pivot)
@@ -356,7 +356,7 @@ int RoomMng::partition(int low, int high)
     int i
         = (low - 1); // Index of smaller element and indicates
                  // the right position of pivot found so far
-  
+
     for (int j = low; j <= high - 1; j++) {
         // If current element is smaller than the pivot
         if ((*this->manage[j]).getRoomNumber() < pivot) {
@@ -368,7 +368,7 @@ int RoomMng::partition(int low, int high)
     return (i + 1);
 }
 void RoomMng::Sort(int low, int high)
-{   
+{
     if (low < high) {
         int pi = partition(low, high);
         Sort(low, pi - 1);
@@ -381,4 +381,33 @@ void RoomMng::Sort(){
 
 int RoomMng::getSize(){
     return manage.size();
+}
+
+void RoomMng::checkIn()
+{
+    cout << "\nNhap so phong : ";
+    int sp;
+    cin >> sp;
+    int location = this->interpolationSearch(sp);
+    cout << "location : " << location;
+    if (location != -1)
+    {
+        cout << "\nPhong se duoc check in !" << endl;
+        cout << *this->manage[location];
+
+    }
+    else
+    {
+        cout << "Phong khong ton tai !" << endl;
+        while(location == -1)
+        {
+            cout << "Nhap lai : ";
+            cin >> sp;
+            location = interpolationSearch(sp);
+        }
+    }
+    Customer *cust = new Customer();
+    cin >> *cust;
+    this->manage[location]->addCust(cust);
+
 }

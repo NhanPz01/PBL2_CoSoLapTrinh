@@ -16,6 +16,7 @@ int main(){
     a.getRoomData(ROOMS, CUSTOMERS);
     a.Sort();
     a.printAll();
+    a.checkIn();
     a.saveRoomData(ROOMSSAVE);
     a.saveCustomersData(CUSTOMERSSAVE);
 }

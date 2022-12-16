@@ -26,4 +26,5 @@ public:
     void printBy();
     int partition(int, int);
     int getSize();
+    void checkIn();
 };
