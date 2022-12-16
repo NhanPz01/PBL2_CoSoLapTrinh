@@ -1,0 +1,7 @@
+first line -> number of room
+//----
+for 4 lines
+//-> status
+//-> room number
+//-> rent
+//-> type

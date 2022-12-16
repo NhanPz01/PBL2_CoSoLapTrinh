@@ -27,4 +27,6 @@ public:
     int partition(int, int);
     int getSize();
     void checkIn();
+    void checkOut();
+    double getBill(int, int);
 };

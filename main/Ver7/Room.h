@@ -28,8 +28,7 @@ public:
     double getRent() const;
     bool getStatus() const;
     Customer getCustomer();
-    void removeCustomer();
-    
+
     void statusCheck();
     void addCust(Customer*);
     void removeCust();

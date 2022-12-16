@@ -106,7 +106,6 @@ Customer Customer::operator=(const Customer& c){
 }
 void Customer::update()
 {
-    int s;
     cout << "Khach Hang" << endl;
     cout << "1. Ten Khach" << endl;
     cout << "2. Dia Chi" << endl;
@@ -115,56 +114,53 @@ void Customer::update()
     cout << "5. Ngay Tra Phong" << endl;
     cout << "6. Tien Dat Coc" << endl;
     cout << "7. BookingID" << endl;
+    cout << "8. Lui lai" << endl;
+    int s;
     cin >> s;
     switch (s)
     {
-    case 1:
-    {
-        cout << "Ten Khach : ";
-        cin.ignore();
-        getline(cin, this->name);
-        break;
-    }
-
-    case 2:
-    {
-        cout << "Dia Chi se duoc doi ve: ";
-        cin.ignore();
-        getline(cin, this->address);
-        break;
-    }
-    case 3:
-    {
-        cout << "So Dien Thoai se duoc doi ve: ";
-        cin.ignore();
-        getline(cin, this->phone);
-        break;
-    }
-    case 4:
-    {
-        cout << "Ngay Dat Phong se duoc doi ve: ";
-        cin.ignore();
-        getline(cin, this->from_date);
-        break;
-    }
-    case 5:
-    {
-        cout << "Ngay Tra Phong se duoc doi ve: ";
-        cin.ignore();
-        getline(cin, this->to_date);
-        break;
-    }
-    case 6:
-    {
-        cout << "Tien Dat Coc se duoc doi ve: ";
-        cin >> this->advance_payment;
-        break;
-    }
-    case 7:
-    {
-        cout << "Booking ID se duoc doi ve: ";
-        cin >> this->booking_id;
-        break;
-    }
+        case 1 : {
+            cout << "Ten Khach : ";
+            cin.ignore();
+            getline(cin, this->name);
+            break;
+        }
+        case 2 : {
+            cout << "Dia Chi se duoc doi ve: ";
+            cin.ignore();
+            getline(cin, this->address);
+            break;
+        }
+        case 3 : {
+            cout << "So Dien Thoai se duoc doi ve: ";
+            cin.ignore();
+            getline(cin, this->phone);
+            break;
+        }
+        case 4 : {
+            cout << "Ngay Dat Phong se duoc doi ve: ";
+            cin.ignore();
+            getline(cin, this->from_date);
+            break;
+        }
+        case 5 : {
+            cout << "Ngay Tra Phong se duoc doi ve: ";
+            cin.ignore();
+            getline(cin, this->to_date);
+            break;
+        }
+        case 6 : {
+            cout << "Tien Dat Coc se duoc doi ve: ";
+            cin >> this->advance_payment;
+            break;
+        }
+        case 7 : {
+            cout << "Booking ID se duoc doi ve: ";
+            cin >> this->booking_id;
+            break;
+        }
+        default : {
+            break;
+        }
     }
 }

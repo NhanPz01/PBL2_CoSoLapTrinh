@@ -74,12 +74,12 @@ ostream &operator<<(ostream &o, const Room &r)
 {
 	o << "So Phong: " << r.getRoomNumber()
 	  << "\nTinh Trang: ";
-	if (r.getType() == 0)
+	if (r.getStatus() == 0)
 		cout << "Phong Trong";
 	else
 		cout << "Phong Da Co Nguoi";
 	o << "\nLoai Phong: ";
-	if (r.getStatus() == 0)
+	if (r.getType() == 0)
 		cout << "Phong don/doi";
 	else
 		cout << "Phong gia dinh";
@@ -107,8 +107,11 @@ istream &operator>>(istream &i, Room &r)
 	cout << "Tien Phong: ";
 	i >> p;
 	r.setRent(p);
-	i >> *tempCustomer;
-	r.setCustomer(tempCustomer);
+	if (s == 1)
+	{
+		i >> *tempCustomer;
+		r.setCustomer(tempCustomer);
+	}
 	r.statusCheck();
 	return i;
 }
@@ -132,6 +135,7 @@ void Room::addCust(Customer *cust)
 void Room::removeCust()
 {
 	this->customer = &PHONG_TRONG;
+	this->status = 0;
 }
 
 void Room::statusCheck(){
