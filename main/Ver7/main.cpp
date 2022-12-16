@@ -39,32 +39,67 @@ int main(){
         int choose;
         cin >> choose;
         switch(choose) {
-            case 1:
+            case 1 : {
                 manager.printAll();
                 break;
-            case 2:
+            }
+            case 2 : {
                 manager.printAvailable();
                 break;
-            case 3:
+            }
+            case 3 : {
                 manager.add();
                 break;
-            case 4:
-                cout << "Nhap so phong : " << endl;
+            }
+            case 4 : {
+                cout << "Nhap so phong : ";
                 int s;
                 cin >> s;
                 manager.updateRoom(s);
                 break;
-            case 5:
+            }
+            case 5 : {
+                cout << "Nhap so phong : ";
+                int s;
+                cin >> s;
+                manager.removeAt(s);
                 break;
-            case 6:
+            }
+            case 6 : {
+                cout << "Nhap so phong : ";
+                int s;
+                cin >> s;
+                int location = manager.interpolationSearch(s);
+                if (location != -1)
+                {
+                    manager.printRoom(location);
+                }
+                else
+                {
+                    cout << "Phong khong ton tai !" << endl;
+                    while(location == -1)
+                    {
+                        cout << "Vui long nhap lai : ";
+                        cin >> s;
+                        location = manager.interpolationSearch(s);
+                    }
+                    cout << "\nPhong se bi xoa !" << endl;
+                    manager.printRoom(location);
+                }
                 break;
-            case 7:
+            }
+            case 7 : {
+                manager.checkIn();
                 break;
-            case 8:
+            }
+            case 8 : {
+                manager.checkOut();
                 break;
-            default:
+            }
+            default : {
                 flag = false;
                 break;
+            }
         }
     } while (flag);
 }

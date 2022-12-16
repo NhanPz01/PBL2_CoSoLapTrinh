@@ -19,7 +19,7 @@ ostream& operator<<(ostream& o, const Room& r){
 }
 
 istream& operator>>(istream& i, Room& r){
-	int n; bool s,t; double p;
+	int n; bool s,t; long double p;
 	cout << "Room number: ";
 	i >> n;
 	r.setRoomNumber(n);
@@ -47,7 +47,7 @@ bool Room::getType() const{
 	return this->type;
 }
 
-double Room::getRent() const{
+long double Room::getRent() const{
 	return this->rent;
 }
 
@@ -61,7 +61,7 @@ void Room::setStatus(bool s){
 void Room::setType(bool t){
 	this->type = t;
 }
-void Room::setRent(double p){
+void Room::setRent(long double p){
 	this->rent = p;
 }
 

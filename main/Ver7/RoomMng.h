@@ -28,5 +28,5 @@ public:
     int getSize();
     void checkIn();
     void checkOut();
-    double getBill(int, int);
+    long double getBill(int, int);
 };

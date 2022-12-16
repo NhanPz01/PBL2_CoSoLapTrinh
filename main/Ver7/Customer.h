@@ -11,11 +11,11 @@ private:
     string phone;
     string from_date;
     string to_date;
-    double advance_payment;
+    long double advance_payment;
     int booking_id;
 public:
     Customer();
-    Customer(string,string,string,string,string,double,int);
+    Customer(string,string,string,string,string,long double,int);
     Customer(Customer&);
     ~Customer();
     void setName(string);
@@ -23,7 +23,7 @@ public:
     void setPhone(string);
     void setFromDate(string);
     void setToDate(string);
-    void setAdvancePayment(double);
+    void setAdvancePayment(long double);
     void setBookingId(int);
 
     string getName() const;
@@ -31,7 +31,7 @@ public:
     string getPhone() const;
     string getFromDate() const;
     string getToDate() const;
-    double getAdvancePayment() const;
+    long double getAdvancePayment() const;
     int getBookingId() const;
 
     void update();

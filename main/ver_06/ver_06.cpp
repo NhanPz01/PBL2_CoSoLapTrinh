@@ -14,7 +14,7 @@ using namespace std;
 // }
 
 // istream& operator>>(istream &i, Room& r){
-// 	int n; bool s,t; double p;
+// 	int n; bool s,t; long double p;
 // 	cout << "Room number: ";
 // 	i >> n;
 // 	r.setRoomNumber(n);

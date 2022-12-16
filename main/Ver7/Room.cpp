@@ -11,13 +11,13 @@ Room::Room()
 	this->status = false;
 }
 
-Room::Room(bool status, int roomNumber, double rent, bool type)
+Room::Room(bool status, int roomNumber, long double rent, bool type)
 	: status(status), roomNumber(roomNumber), rent(rent), type(type)
 {
 	this->customer = &PHONG_TRONG;
 }
 
-Room::Room(bool status, int roomNumber, double rent, bool type, Customer *c) : status(status), roomNumber(roomNumber), rent(rent), type(type)
+Room::Room(bool status, int roomNumber, long double rent, bool type, Customer *c) : status(status), roomNumber(roomNumber), rent(rent), type(type)
 {
 	this->customer = c;
 }
@@ -38,14 +38,14 @@ bool Room::getType() const
 {
 	return this->type;
 }
-double Room::getRent() const
+long double Room::getRent() const
 {
 	return this->rent;
 }
 
-Customer Room::getCustomer()
+Customer* Room::getCustomer()
 {
-	return *this->customer;
+	return this->customer;
 }
 
 void Room::setRoomNumber(int n)
@@ -60,7 +60,7 @@ void Room::setType(bool t)
 {
 	this->type = t;
 }
-void Room::setRent(double p)
+void Room::setRent(long double p)
 {
 	this->rent = p;
 }
@@ -93,7 +93,7 @@ istream &operator>>(istream &i, Room &r)
 {
 	int n;
 	bool s, t;
-	double p;
+	long double p;
 	Customer *tempCustomer = new Customer;
 	cout << "Vui Long Nhap So Phong: ";
 	i >> n;

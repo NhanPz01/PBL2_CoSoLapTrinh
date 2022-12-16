@@ -7,27 +7,27 @@ class Room
 private:
     bool status;
     int roomNumber;
-    double rent;
+    long double rent;
     bool type;
     Customer *customer;
 
 public:
     Room();
-    Room(bool, int, double, bool);
-    Room(bool, int, double, bool, Customer*);
+    Room(bool, int, long double, bool);
+    Room(bool, int, long double, bool, Customer*);
     ~Room();
     void setType(bool);
     void setRoomNumber(int);
-    void setRent(double);
+    void setRent(long double);
     void setStatus(bool);
     void setCustomer(Customer*);
     void setEmptyRoom();
 
     bool getType() const;
     int getRoomNumber() const;
-    double getRent() const;
+    long double getRent() const;
     bool getStatus() const;
-    Customer getCustomer();
+    Customer* getCustomer();
 
     void statusCheck();
     void addCust(Customer*);

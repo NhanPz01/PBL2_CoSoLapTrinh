@@ -3,7 +3,7 @@
 Customer::Customer(){
 }
 
-Customer::Customer(string name, string address, string phone, string from_date, string to_date, double advance_payment, int booking_id)
+Customer::Customer(string name, string address, string phone, string from_date, string to_date, long double advance_payment, int booking_id)
     : name(name), address(address), phone(phone), from_date(from_date), to_date(to_date), advance_payment(advance_payment), booking_id(booking_id) {
 }
 
@@ -35,7 +35,7 @@ void Customer::setFromDate(string from_date){
 void Customer::setToDate(string to_date){
     this->to_date = to_date;
 }
-void Customer::setAdvancePayment(double advance_payment){
+void Customer::setAdvancePayment(long double advance_payment){
     this->advance_payment = advance_payment;
 }
 void Customer::setBookingId(int booking_id){
@@ -57,7 +57,7 @@ string Customer::getFromDate() const{
 string Customer::getToDate() const{
     return this->to_date;
 }
-double Customer::getAdvancePayment() const{
+long double Customer::getAdvancePayment() const{
     return this->advance_payment;
 }
 int Customer::getBookingId() const{
@@ -69,7 +69,7 @@ ostream& operator<<(ostream& o, const Customer& c){
     return o;
 }
 istream& operator>>(istream& i, Customer& c){
-    string n,a,p,fd,td; double ap; int id;
+    string n,a,p,fd,td; long double ap; int id;
 	cout << "\nHo va Ten: ";
     cin.ignore();
     getline(i, n);
