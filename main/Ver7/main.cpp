@@ -25,17 +25,17 @@ int main(){
     bool flag = true;
     do {
         system("cls");
-        cout << "----------KHACH SAN AHIHI----------" << endl
-             << "(1) Hien thi tat ca cac phong" << endl
-             << "(2) Hien thi phong trong" << endl
-             << "(3) Them phong" << endl
-             << "(4) Sua thong tin" << endl
-             << "(5) Xoa phong" << endl
-             << "(6) Tim phong" << endl
-             << "(7) Checkin" << endl
-             << "(8) Checkout" << endl
-             << "(9) Thoat" << endl
-             << "Lua chon : ";
+        cout << "----------KHACH SAN AHIHI----------" << endl;
+        cout << "(1) Hien thi tat ca cac phong" << endl;
+        cout << "(2) Hien thi phong trong" << endl;
+        cout << "(3) Them phong" << endl;
+        cout << "(4) Sua thong tin" << endl;
+        cout << "(5) Xoa phong" << endl;
+        cout << "(6) Tim phong" << endl;
+        cout << "(7) Checkin" << endl;
+        cout << "(8) Checkout" << endl;
+        cout << "(9) Thoat" << endl;
+        cout << "Lua chon : ";
         int choose;
         cin >> choose;
         switch(choose) {
