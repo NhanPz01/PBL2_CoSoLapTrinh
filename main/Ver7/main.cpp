@@ -3,18 +3,17 @@
 #include <iostream>
 using namespace std;
 
-void SetColor(int backgound_color, int text_color)
-{
-    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+// void SetColor(int backgound_color, int text_color)
+// {
+//     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    int color_code = backgound_color * 16 + text_color;
-    SetConsoleTextAttribute(hStdout, color_code);
-}
+//     int color_code = backgound_color * 16 + text_color;
+//     SetConsoleTextAttribute(hStdout, color_code);
+// }
 
 int main(){
-    HANDLE console_color;
-    console_color = GetStdHandle(
-        STD_OUTPUT_HANDLE);
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hStdOut,  BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED);
     string const ROOMS = "rooms.txt";
 	string const ROOMSSAVE = "rooms.txt";
 	string const CUSTOMERS = "customers.txt";
@@ -38,9 +37,8 @@ int main(){
     bool flag = true;
     do {
         system("cls");
-        SetConsoleTextAttribute(
-            console_color, 7);
-        SetColor(7, 0);
+        // SetConsoleTextAttribute(console_color, 7);
+        // SetColor(7, 0);
         cout << "----------KHACH SAN AHIHI---------" << endl;
         cout << "(1) Hien thi tat ca cac phong" << endl;
         cout << "(2) Hien thi phong trong" << endl;
