@@ -1,3 +1,4 @@
+#include <iomanip>
 #include "Customer.h"
 #include <string>
 Customer::Customer(){
@@ -65,7 +66,12 @@ int Customer::getBookingId() const{
 }
 
 ostream& operator<<(ostream& o, const Customer& c){
-    o << "\nHo va Ten: " << c.getName() << "\nDia Chi: " << c.getAddress() << "\nNgay Check In: " << c.getFromDate() << "\nNgay Check Out: " << c.getToDate() << "\nTien Coc: " << c.getAdvancePayment() << "\nID: " << c.getBookingId() << endl;
+    o << "\nHo va Ten: " << c.getName()
+      << "\nDia Chi: " << c.getAddress()
+      << "\nNgay Check In: " << c.getFromDate()
+      << "\nNgay Check Out: " << c.getToDate()
+      << "\nTien Coc: " << fixed << setprecision(0) << c.getAdvancePayment()
+      << "\nID: " << c.getBookingId() << endl;
     return o;
 }
 istream& operator>>(istream& i, Customer& c){

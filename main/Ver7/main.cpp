@@ -1,4 +1,5 @@
 #include <windows.h>
+#include <cwchar>
 #include "RoomMng.h"
 #include <iostream>
 using namespace std;
@@ -12,6 +13,21 @@ using namespace std;
 // }
 
 int main(){
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize = sizeof(cfi);
+    cfi.nFont = 0;
+    cfi.dwFontSize.X = 0;                   // Width of each character in the font
+    cfi.dwFontSize.Y = 30;                  // Height
+    cfi.FontFamily = FF_DONTCARE;
+    cfi.FontWeight = FW_NORMAL;
+    wcscpy(cfi.FaceName, L"Consolas"); // Choose your font
+    SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+
+    cout << "Font: Consolas, Size: 24\n";
+    HWND console = GetConsoleWindow();
+	RECT ConsoleRect;
+	GetWindowRect(console, &ConsoleRect);
+    MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 900, 800, TRUE);
     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hStdOut,  BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED);
     string const ROOMS = "rooms.txt";
@@ -39,7 +55,7 @@ int main(){
         system("cls");
         // SetConsoleTextAttribute(console_color, 7);
         // SetColor(7, 0);
-        cout << "----------KHACH SAN AHIHI---------" << endl;
+        cout << "-----------------------KHACH SAN AHIHI----------------------" << endl;
         cout << "(1) Hien thi tat ca cac phong" << endl;
         cout << "(2) Hien thi phong trong" << endl;
         cout << "(3) Them phong" << endl;
