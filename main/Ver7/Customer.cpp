@@ -1,10 +1,9 @@
-#include <iomanip>
 #include "Customer.h"
 #include <string>
 Customer::Customer(){
 }
 
-Customer::Customer(string name, string address, string phone, string from_date, string to_date, long double advance_payment, int booking_id)
+Customer::Customer(string name, string address, string phone, Date& from_date, Date& to_date, long double advance_payment, int booking_id)
     : name(name), address(address), phone(phone), from_date(from_date), to_date(to_date), advance_payment(advance_payment), booking_id(booking_id) {
 }
 
@@ -30,10 +29,10 @@ void Customer::setAddress(string address){
 void Customer::setPhone(string phone){
     this->phone = phone;
 }
-void Customer::setFromDate(string from_date){
+void Customer::setFromDate(Date& from_date){
     this->from_date = from_date;
 }
-void Customer::setToDate(string to_date){
+void Customer::setToDate(Date& to_date){
     this->to_date = to_date;
 }
 void Customer::setAdvancePayment(long double advance_payment){
@@ -52,10 +51,10 @@ string Customer::getAddress() const{
 string Customer::getPhone() const{
     return this->phone;
 }
-string Customer::getFromDate() const{
+Date Customer::getFromDate() const{
     return this->from_date;
 }
-string Customer::getToDate() const{
+Date Customer::getToDate() const{
     return this->to_date;
 }
 long double Customer::getAdvancePayment() const{
@@ -66,16 +65,12 @@ int Customer::getBookingId() const{
 }
 
 ostream& operator<<(ostream& o, const Customer& c){
-    o << "\nHo va Ten: " << c.getName()
-      << "\nDia Chi: " << c.getAddress()
-      << "\nNgay Check In: " << c.getFromDate()
-      << "\nNgay Check Out: " << c.getToDate()
-      << "\nTien Coc: " << fixed << setprecision(0) << c.getAdvancePayment()
-      << "\nID: " << c.getBookingId() << endl;
+    o << "\nHo va Ten: " << c.getName() << "\nDia Chi: " << c.getAddress() << "\nNgay Check In: " << c.getFromDate() << "\nNgay Check Out: " << c.getToDate() << "\nTien Coc: " << c.getAdvancePayment() << "\nID: " << c.getBookingId() << endl;
     return o;
 }
 istream& operator>>(istream& i, Customer& c){
-    string n,a,p,fd,td; long double ap; int id;
+    string n,a,p; long double ap; int id;
+    Date fd, td;
 	cout << "\nHo va Ten: ";
     cin.ignore();
     getline(i, n);
@@ -87,10 +82,10 @@ istream& operator>>(istream& i, Customer& c){
     getline(i, p);
     c.setPhone(p);
     cout << "\nNgay Check In: ";
-    getline(i, fd);
+    i >> fd;
     c.setFromDate(fd);
     cout << "\nNgay Check Out: ";
-    getline(i, td);
+    i >> td;
     c.setToDate(td);
     cout << "\nTien Coc: ";
     i >> ap;
@@ -145,14 +140,12 @@ void Customer::update()
         }
         case 4 : {
             cout << "Ngay Dat Phong se duoc doi ve: ";
-            cin.ignore();
-            getline(cin, this->from_date);
+            cin >> this->from_date;
             break;
         }
         case 5 : {
             cout << "Ngay Tra Phong se duoc doi ve: ";
-            cin.ignore();
-            getline(cin, this->to_date);
+            cin >> this->to_date;
             break;
         }
         case 6 : {

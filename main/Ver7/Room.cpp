@@ -1,9 +1,9 @@
 #include "Room.h"
 Room TestRoom(1, 1, 1, 1);
-Customer PHONG_TRONG("Chua co", "Chua co", "Chua co", "Chua co", "Chua co", 0, 0);
+Date NGAY_TRONG(0,0,0);
+Customer PHONG_TRONG("Chua co", "Chua co", "Chua co", NGAY_TRONG, NGAY_TRONG, 0, 0);
 void Room::setEmptyRoom(){
 	this->customer = &PHONG_TRONG;
-
 }
 Room::Room()
 {
