@@ -3,15 +3,6 @@
 #include "RoomMng.h"
 #include <iostream>
 using namespace std;
-
-// void SetColor(int backgound_color, int text_color)
-// {
-//     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-
-//     int color_code = backgound_color * 16 + text_color;
-//     SetConsoleTextAttribute(hStdout, color_code);
-// }
-
 int main(){
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof(cfi);
@@ -35,26 +26,11 @@ int main(){
 	string const CUSTOMERS = "customers.txt";
 	string const CUSTOMERSSAVE = "customers.txt";
     Room  *c = new Room(0,1999,1,1);
-    // Room c1(0,0,0,0);
-    // Room c2(1,199,1,1);
-    // Room a;
-    // cin >> a;
-    // cout << a;
-    // RoomMng a;
-    // a.getRoomData(ROOMS, CUSTOMERS);
-    // a.Sort();
-    // a.printAll();
-    // a.checkIn();
-    // a.checkOut();
-    // a.saveRoomData(ROOMSSAVE);
-    // a.saveCustomersData(CUSTOMERSSAVE);
     RoomMng manager;
     manager.getRoomData(ROOMS, CUSTOMERS);
     bool flag = true;
     do {
         system("cls");
-        // SetConsoleTextAttribute(console_color, 7);
-        // SetColor(7, 0);
         cout << "-----------------------KHACH SAN AHIHI----------------------" << endl;
         cout << "(1) Hien thi tat ca cac phong" << endl;
         cout << "(2) Hien thi phong trong" << endl;
@@ -132,4 +108,6 @@ int main(){
             }
         }
     } while (flag);
+    manager.saveRoomData(ROOMSSAVE);
+    manager.saveCustomersData(CUSTOMERSSAVE);
 }

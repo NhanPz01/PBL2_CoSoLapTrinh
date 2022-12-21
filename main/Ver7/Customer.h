@@ -37,6 +37,7 @@ public:
 
     void update();
     void rev();
+    int dateDiff();
 
     friend ostream& operator<<(ostream&, const Customer&);
     friend istream& operator>>(istream&, Customer&);

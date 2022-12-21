@@ -18,41 +18,52 @@ void RoomMng::getRoomData(const string ROOMS, const string CUSTOMERS)
     ifstream customersFile;
     roomsFile.open(ROOMS);
     customersFile.open(CUSTOMERS);
+    Date from_date,to_date;
     if (!roomsFile.is_open())
     {
         cout << "Unable to get the rooms information" << endl;
     }
     else
     {
+        
         vector<Customer *> customers;
         int numberOfCustomers;
         customersFile >> numberOfCustomers;
         for (int i = 0; i < numberOfCustomers; i++)
         {
             Customer *cust = new Customer;
-            string name, address, phone, from_date, to_date;
+            string name, address, phone;
+            int d1,m1,y1,d2,m2,y2;
             long double advance_payment;
             int booking_id;
             customersFile.ignore();
             getline(customersFile, name);
-            (*cust).setName(name);
             getline(customersFile, address);
-            (*cust).setAddress(address);
-            customersFile >> phone;
-            (*cust).setPhone(phone);
-
-            customersFile >> from_date;
-            (*cust).setFromDate(from_date);
-
-            customersFile >> to_date;
-            (*cust).setToDate(to_date);
-
+            getline(customersFile, phone);
+            customersFile >> d1;
+            customersFile >> m1;
+            customersFile >> y1;
+            customersFile >> d2;
+            customersFile >> m2;
+            customersFile >> y2;
             customersFile >> advance_payment;
-			(*cust).setAdvancePayment(advance_payment);
             customersFile >> booking_id;
+
+            from_date.setDay(d1);
+            from_date.setMonth(m1);
+            from_date.setYear(y1);
+            to_date.setDay(d2);
+            to_date.setMonth(m2);
+            to_date.setYear(y2);
+            
+            (*cust).setName(name);
+            (*cust).setAddress(address);
+            (*cust).setPhone(phone);
+            (*cust).setFromDate(from_date);
+            (*cust).setToDate(to_date);
+			(*cust).setAdvancePayment(advance_payment);
 			(*cust).setBookingId(booking_id);
             customers.push_back(cust);
-
         }
         int roomNumber;
         roomsFile >> roomNumber;
@@ -119,8 +130,12 @@ void RoomMng::saveCustomersData(const string CUSTOMERS){
 				customersFile << cust.getName() << endl;
 				customersFile << cust.getAddress() << endl;
 				customersFile << cust.getPhone() << endl;
-				customersFile << cust.getFromDate() << endl;
-				customersFile << cust.getToDate() << endl;
+				customersFile << cust.getFromDate().getDay() << endl;
+                customersFile << cust.getFromDate().getMonth() << endl;
+                customersFile << cust.getFromDate().getYear() << endl;
+                customersFile << cust.getToDate().getDay() << endl;
+                customersFile << cust.getToDate().getMonth() << endl;
+                customersFile << cust.getToDate().getYear() << endl;
 				customersFile << cust.getAdvancePayment() << endl;
                 customersFile << cust.getBookingId() << endl;
 		}
@@ -518,9 +533,8 @@ void RoomMng::checkOut()
         cout << "\nPhong se duoc check out !" << endl;
         cout << *this->manage[location];
     }
-    cout << "\nNhap so ngay thue phong : ";
-    int days;
-    cin >> days;
+    int days = this->manage[location]->getCustomer()->dateDiff();
+
     cout << fixed << "\nBill : " << this->getBill(days, location) << endl;
     this->manage[location]->removeCust();
     system("pause");

@@ -104,4 +104,5 @@ Date Date::operator=(const Date& date){
     this->day = date.getDay();
     this->month = date.getMonth();
     this->year = date.getYear();
+    return *this;
 }

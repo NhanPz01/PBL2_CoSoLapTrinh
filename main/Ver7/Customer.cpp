@@ -163,3 +163,7 @@ void Customer::update()
         }
     }
 }
+
+int Customer::dateDiff(){
+   return this->from_date.toDate(this->to_date);
+}
