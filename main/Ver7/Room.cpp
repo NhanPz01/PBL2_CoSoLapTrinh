@@ -1,14 +1,15 @@
 #include "Room.h"
 Room TestRoom(1, 1, 1, 1);
-Date NGAY_TRONG(0,0,0);
+Date NGAY_TRONG(0, 0, 0);
 Customer PHONG_TRONG("Chua co", "Chua co", "Chua co", NGAY_TRONG, NGAY_TRONG, 0, 0);
-void Room::setEmptyRoom(){
+void Room::setEmptyRoom()
+{
 	this->customer = &PHONG_TRONG;
 }
 Room::Room()
 {
 	this->customer = &PHONG_TRONG;
-	this->status = false;
+	this->status = 0;
 }
 
 Room::Room(bool status, int roomNumber, long double rent, bool type)
@@ -43,7 +44,7 @@ long double Room::getRent() const
 	return this->rent;
 }
 
-Customer* Room::getCustomer()
+Customer *Room::getCustomer()
 {
 	return this->customer;
 }
@@ -66,7 +67,7 @@ void Room::setRent(long double p)
 }
 
 void Room::setCustomer(Customer *customer)
-{
+{	
 	this->customer = customer;
 }
 
@@ -74,23 +75,27 @@ ostream &operator<<(ostream &o, const Room &r)
 {
 	o << "So Phong: " << r.getRoomNumber()
 	  << "\nTinh Trang: ";
-	if (r.getStatus() == 0)
+	if (r.getStatus() == false)
 		cout << "Phong Trong";
 	else
 		cout << "Phong Da Co Nguoi";
 	o << "\nLoai Phong: ";
-	if (r.getType() == 0)
+	if (r.getType() == false)
 		cout << "Phong don/doi";
 	else
 		cout << "Phong gia dinh";
-	o << "\nTien Phong: " << r.getRent()
-	  << "\nKhach Dat Phong: " << (*r.customer)
-	  << endl ;
+	o << "\nTien Phong: " << r.getRent();
+	if (r.getStatus() == true)
+	{
+		o << "\nKhach Dat Phong: " << (*r.customer);
+	}
+	cout << endl;
 	return o;
 }
 
 istream &operator>>(istream &i, Room &r)
-{
+{	
+	system("cls");
 	int n;
 	bool s, t;
 	long double p;
@@ -112,8 +117,11 @@ istream &operator>>(istream &i, Room &r)
 		i >> *tempCustomer;
 		r.setCustomer(tempCustomer);
 	}
+	else r.setCustomer(&PHONG_TRONG);
 	r.statusCheck();
 	return i;
+	system("pause");
+	system("cls");
 }
 
 Room Room::operator=(const Room &r)
@@ -129,7 +137,7 @@ Room Room::operator=(const Room &r)
 void Room::addCust(Customer *cust)
 {
 	this->customer = cust;
-	this->status = true;
+	this->status = 1;
 }
 
 void Room::removeCust()
@@ -138,10 +146,12 @@ void Room::removeCust()
 	this->status = 0;
 }
 
-void Room::statusCheck(){
-	if((*this->customer).getName()== "Chua co")
-		this->status = false;
-	else if((*this->customer).getName()== "")
-		this->status = false;
-	else this->status =	true;
+void Room::statusCheck()
+{
+	if ((*this->customer).getName() == "Chua co")
+		this->status = 0;
+	else if ((*this->customer).getName() == "")
+		this->status = 0;
+	else
+		this->status = 1;
 }

@@ -5,7 +5,7 @@
 
 void drawaline()
 {
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 61; i++)
     {
         cout << "=";
     }
@@ -18,14 +18,14 @@ void RoomMng::getRoomData(const string ROOMS, const string CUSTOMERS)
     ifstream customersFile;
     roomsFile.open(ROOMS);
     customersFile.open(CUSTOMERS);
-    Date from_date,to_date;
+    Date from_date, to_date;
     if (!roomsFile.is_open())
     {
         cout << "Unable to get the rooms information" << endl;
     }
     else
     {
-        
+
         vector<Customer *> customers;
         int numberOfCustomers;
         customersFile >> numberOfCustomers;
@@ -33,7 +33,7 @@ void RoomMng::getRoomData(const string ROOMS, const string CUSTOMERS)
         {
             Customer *cust = new Customer;
             string name, address, phone;
-            int d1,m1,y1,d2,m2,y2;
+            int d1, m1, y1, d2, m2, y2;
             long double advance_payment;
             int booking_id;
             customersFile.ignore();
@@ -55,14 +55,14 @@ void RoomMng::getRoomData(const string ROOMS, const string CUSTOMERS)
             to_date.setDay(d2);
             to_date.setMonth(m2);
             to_date.setYear(y2);
-            
+
             (*cust).setName(name);
             (*cust).setAddress(address);
             (*cust).setPhone(phone);
             (*cust).setFromDate(from_date);
             (*cust).setToDate(to_date);
-			(*cust).setAdvancePayment(advance_payment);
-			(*cust).setBookingId(booking_id);
+            (*cust).setAdvancePayment(advance_payment);
+            (*cust).setBookingId(booking_id);
             customers.push_back(cust);
         }
         int roomNumber;
@@ -84,7 +84,8 @@ void RoomMng::getRoomData(const string ROOMS, const string CUSTOMERS)
             if (i < numberOfCustomers)
                 (*room).setCustomer(customers[i]);
 
-            else (*room).setEmptyRoom();
+            else
+                (*room).setEmptyRoom();
             this->manage.push_back(room);
         }
     }
@@ -92,63 +93,73 @@ void RoomMng::getRoomData(const string ROOMS, const string CUSTOMERS)
     customersFile.close();
 }
 
-void RoomMng::saveRoomData(const string ROOMS){
+void RoomMng::saveRoomData(const string ROOMS)
+{
     ofstream roomsFile;
-	roomsFile.open(ROOMS);
-	if (!roomsFile.is_open())
-	{
-		cout << "Unable to save the rooms information" << endl;
-	}
-	else
-	{
+    roomsFile.open(ROOMS);
+    if (!roomsFile.is_open())
+    {
+        cout << "Unable to save the rooms information" << endl;
+    }
+    else
+    {
 
-		roomsFile << manage.size() << endl;
-		for (int i = 0; i < manage.size(); i++)
-		{
-			roomsFile << (*this->manage[i]).getStatus() << endl;
-			roomsFile << (*this->manage[i]).getRoomNumber() << endl;
-			roomsFile << (*this->manage[i]).getRent() << endl;
-			roomsFile << (*this->manage[i]).getType() << endl;
-		}
-	}
-	roomsFile.close();
+        roomsFile << manage.size() << endl;
+        for (int i = 0; i < manage.size(); i++)
+        {
+            roomsFile << (*this->manage[i]).getStatus() << endl;
+            roomsFile << (*this->manage[i]).getRoomNumber() << endl;
+            roomsFile << (*this->manage[i]).getRent() << endl;
+            roomsFile << (*this->manage[i]).getType() << endl;
+        }
+    }
+    roomsFile.close();
 }
 
-void RoomMng::saveCustomersData(const string CUSTOMERS){
+void RoomMng::saveCustomersData(const string CUSTOMERS)
+{
     ofstream customersFile;
-	customersFile.open(CUSTOMERS);
-	if (!customersFile.is_open())
-	{
-		cout << "Unable to save the customers data" << endl;
-	}
-	else
-	{
-		customersFile << manage.size() << endl;
-		for (int i = 0; i < manage.size(); i++)
-		{
-			Customer cust = *((*this->manage[i]).getCustomer());
-				customersFile << cust.getName() << endl;
-				customersFile << cust.getAddress() << endl;
-				customersFile << cust.getPhone() << endl;
-				customersFile << cust.getFromDate().getDay() << endl;
-                customersFile << cust.getFromDate().getMonth() << endl;
-                customersFile << cust.getFromDate().getYear() << endl;
-                customersFile << cust.getToDate().getDay() << endl;
-                customersFile << cust.getToDate().getMonth() << endl;
-                customersFile << cust.getToDate().getYear() << endl;
-				customersFile << cust.getAdvancePayment() << endl;
-                customersFile << cust.getBookingId() << endl;
-		}
-	}
-	customersFile.close();
+    customersFile.open(CUSTOMERS);
+    if (!customersFile.is_open())
+    {
+        cout << "Unable to save the customers data" << endl;
+    }
+    else
+    {
+        customersFile << manage.size() << endl;
+        for (int i = 0; i < manage.size(); i++)
+        {
+            Customer cust = *((*this->manage[i]).getCustomer());
+            customersFile << cust.getName() << endl;
+            customersFile << cust.getAddress() << endl;
+            customersFile << cust.getPhone() << endl;
+            customersFile << cust.getFromDate().getDay() << endl;
+            customersFile << cust.getFromDate().getMonth() << endl;
+            customersFile << cust.getFromDate().getYear() << endl;
+            customersFile << cust.getToDate().getDay() << endl;
+            customersFile << cust.getToDate().getMonth() << endl;
+            customersFile << cust.getToDate().getYear() << endl;
+            customersFile << cust.getAdvancePayment() << endl;
+            customersFile << cust.getBookingId() << endl;
+        }
+    }
+    customersFile.close();
 }
 
 void RoomMng::add()
 {
+    int anotherNumber;
     int size = this->manage.size();
     Room *a = new Room;
+    cin >> *a;
+    // cin >> *(this->manage[size]);
+    while (interpolationSearch(a->getRoomNumber()) != -1)
+    {
+        cout << "SO PHONG NAY DA TON TAI VUI LONG NHAP LAI: ";
+        cin >> anotherNumber;
+        a->setRoomNumber(anotherNumber);
+    }
     this->manage.push_back(a);
-    cin >> *(this->manage[size]);
     system("pause");
 }
 void RoomMng::add(Room *n)
@@ -158,26 +169,30 @@ void RoomMng::add(Room *n)
 void RoomMng::removeAt(int index)
 {
     int location = interpolationSearch(index);
-    if (location != -1)
-    {
-        cout << "\nPhong se bi xoa !" << endl;
-        cout << *this->manage[location];
-        system("pause");
-    }
-    else
+    while (location == -1)
     {
         cout << "Phong khong ton tai !" << endl;
-        while(location == -1)
-        {
-            cout << "Vui long nhap lai : ";
-            cin >> index;
-            location = this->interpolationSearch(index);
-        }
-        cout << "\nPhong se bi xoa !" << endl;
-        cout << *this->manage[location];
-        system("pause");
+        cout << "Vui long nhap lai : ";
+        cin >> index;
+        location = interpolationSearch(index);
     }
-    (this->manage).erase((this->manage).begin() + location);
+    cout << "\nPHONG SE BI XOA: " << endl;
+    cout << *this->manage[location];
+    int choose;
+    cout << "\t(1) XOA PHONG NAY" << endl
+         << "\t(2) LUI LAI" << endl
+         << "LUA CHON : ";
+    cin >> choose;
+    switch (choose)
+    {
+    case 1:
+    {
+        (this->manage).erase((this->manage).begin() + location);
+        break;
+    }
+    default:
+        break;
+    }
 }
 void RoomMng::removeFirst()
 {
@@ -191,8 +206,8 @@ void RoomMng::printAll()
 {
     system("cls");
     drawaline();
-    cout << endl
-         << "DANH SACH CAC PHONG : ";
+    cout << "DANH SACH CAC PHONG : ";
+    cout << endl;
     for (int i = 0; i < this->manage.size(); i++)
         cout << endl
              << *(this->manage[i]);
@@ -203,7 +218,7 @@ void RoomMng::printAll()
 void RoomMng::printRoom(int index)
 {
     cout << endl
-         << "Phong can tim la: " << *(this->manage[index]);
+         << "PHONG CAN TIM LA: " << *(this->manage[index]);
     system("pause");
 }
 void RoomMng::printAvailable()
@@ -211,35 +226,40 @@ void RoomMng::printAvailable()
     vector<int> a;
     system("cls");
     drawaline();
-    cout << endl
-         << "Tat Ca Cac Phong Hien Dang Trong: ";
+
+    cout << "\t\tTAT CA CAC PHONG HIEN DANG TRONG";
     for (int i = 0; i < this->manage.size(); i++)
         if ((*this->manage[i]).getStatus() == 0)
         {
             a.push_back(i);
             cout << endl
-                 << "Phong:" << (*this->manage[i]).getRoomNumber();
+                 << "\tPHONG: " << (*this->manage[i]).getRoomNumber();
         }
     cout << endl;
     bool flag = true;
-    do {
+    do
+    {
         drawaline();
-        cout << "(1) Hien thong tin chi tiet" << endl
-             << "(2) Tiep tuc" << endl
-             << "Lua chon : ";
+        cout << "(1) HIEN THI CHI TIET" << endl
+             << "(..) LUI LAI" << endl
+             << "LUA CHON : ";
         int choose;
         cin >> choose;
-        switch(choose) {
-            case 1:
-                for (int i = 0; i < a.size(); i++) {
-                    cout  << (*this->manage[a[i]]) << endl;
-                }
-                break;
-            default:
-                flag = false;
-                break;
+        switch (choose)
+        {
+        case 1:
+            system("cls");
+            cout << "\tTHONG TIN TAT CA CAC PHONG HIEN DANG TRONG LA: " << endl;;
+            for (int i = 0; i < a.size(); i++)
+            {
+                cout << (*this->manage[a[i]]) << endl;
+            }
+            break;
+        default:
+            flag = false;
+            break;
         }
-    } while(flag);
+    } while (flag);
     drawaline();
 }
 void RoomMng::updateRoom(int index)
@@ -248,79 +268,86 @@ void RoomMng::updateRoom(int index)
     int location = this->interpolationSearch(index);
     if (location != -1)
     {
-        cout << "\nPhong se duoc cap nhat !" << endl;
+        cout << "\nPHONG SE DUOC CAP NHAT: " << endl;
         cout << *this->manage[location];
-
     }
     else
     {
-        cout << "Phong khong ton tai !" << endl;
-        while(location == -1)
+        cout << "PHONG KHONG TON TAI!!" << endl;
+        while (location == -1)
         {
-            cout << "Vui long nhap lai : ";
+            cout << "VUI LONG NHAP LAI: ";
             cin >> index;
             location = this->interpolationSearch(index);
         }
-        cout << "\nPhong se duoc cap nhat !" << endl;
+        cout << "\nPHONG SE DUOC CAP NHAT: " << endl;
         cout << *this->manage[location];
     }
     int s;
-    // cout << "\t   Cap Nhat:" << endl;
-    // cout << "\t1. So Phong" << endl;
-    // cout << "\t2. Loai Phong" << endl;
-    // cout << "\t3. Tien Thue Phong" << endl;
-    // cout << "\t4. Khach Hang" << endl;
     bool flag = true;
-    do {
-        cout << "----------CAP NHAT----------" << endl
-            << "(1) So phong" << endl
-            << "(2) Loai phong" << endl
-            << "(3) Tien thue phong" << endl
-            << "(4) Khach hang" << endl
-            << "(5) Lui lai" << endl
-            << "Lua chon : ";
+    do
+    {
+        system("cls");
+        cout << "\t\t-----------CAP NHAT-----------" << endl
+             << "\t(1) So phong" << endl
+             << "\t(2) Loai phong" << endl
+             << "\t(3) Tien thue phong" << endl;
+        if (this->manage[location]->getStatus() == true)
+        {
+            cout << "\t(4) Khach hang" << endl;
+        }
+            cout << "\t(..) Lui lai" << endl
+             << "Lua chon : ";
         int choose;
         cin >> choose;
         switch (choose)
         {
-            case 1 : {
-                int i;
-                cout << "\tNhap So Phong Muon Doi: \n";
-                cin >> i;
-                (*this->manage[location]).setRoomNumber(i);
-                break;
-            }
-            case 2 : {
-                bool i;
-                cout << "\tNhap 0: Phong 2 Nguoi";
-                cout << "\n\tNhap 1: Phong Gia Dinh\n";
-                cin >> i;
-                (*this->manage[location]).setType(i);
-                break;
-            }
-            case 3 : {
-                long double i;
-                cout << "\tNhap Tien Thue Moi: \n";
-                cin >> i;
-                (*this->manage[location]).setRent(i);
-                break;
-            }
-            case 4 : {
-                (*(*this->manage[location]).getCustomer()).update();
-                break;
-            }
-            default : {
-                flag = false;
-                break;
-            }
+        case 1:
+        {
+            int i;
+            cout << "\tNHAP SO PHONG MUON DOI: \n";
+            cin >> i;
+            (*this->manage[location]).setRoomNumber(i);
+            break;
+        }
+        case 2:
+        {
+            bool i;
+            cout << "\tNHAP 0: PHONG DOI/ NHAP 1: PHONG GIA DINH";
+            cin >> i;
+            (*this->manage[location]).setType(i);
+            break;
+        }
+        case 3:
+        {
+            long double i;
+            cout << "\tNHAP TIEN THUE MOI: \n";
+            cin >> i;
+            (*this->manage[location]).setRent(i);
+            break;
+        }
+        case 4:
+        {
+            if (this->manage[location]->getStatus() == false)
+                return;
+            (*(*this->manage[location]).getCustomer()).update();
+            break;
+        }
+        default:
+        {
+            flag = false;
+            break;
+        }
         }
     } while (flag);
+    system("pause");
+    system("cls");
 }
 int RoomMng::interpolationSearch(int x)
 {
     if ((*this->manage[0]).getRoomNumber() == x)
         return 0;
-    int lo = 0, hi = (this->manage.size())-1;
+    int lo = 0, hi = (this->manage.size()) - 1;
     while (lo <= hi && x >= (*this->manage[lo]).getRoomNumber() && x <= (*this->manage[hi]).getRoomNumber())
     {
         if (lo == hi)
@@ -432,29 +459,14 @@ void RoomMng::printBy()
     }
 }
 
-// void swap(int* a, int* b)
-// {
-//     int t = *a;
-//     *a = *b;
-//     *b = t;
-// }
-
-/* This function takes last element as pivot, places
-the pivot element at its correct position in sorted
-array, and places all smaller (smaller than pivot)
-to left of pivot and all greater elements to right
-of pivot */
 int RoomMng::partition(int low, int high)
 {
-    int pivot = (*this->manage[high]).getRoomNumber(); // pivot
-    int i
-        = (low - 1); // Index of smaller element and indicates
-                 // the right position of pivot found so far
-
-    for (int j = low; j <= high - 1; j++) {
-        // If current element is smaller than the pivot
-        if ((*this->manage[j]).getRoomNumber() < pivot) {
-            i++; // increment index of smaller element
+    int pivot = (*this->manage[high]).getRoomNumber();
+    int i = (low - 1);
+    for (int j = low; j <= high - 1; j++)
+    {
+        if ((*this->manage[j]).getRoomNumber() < pivot)
+        {
             swap((this->manage[i]), (this->manage[j]));
         }
     }
@@ -463,17 +475,20 @@ int RoomMng::partition(int low, int high)
 }
 void RoomMng::Sort(int low, int high)
 {
-    if (low < high) {
+    if (low < high)
+    {
         int pi = partition(low, high);
         Sort(low, pi - 1);
         Sort(pi + 1, high);
     }
 }
-void RoomMng::Sort(){
-    Sort(0, manage.size()-1);
+void RoomMng::Sort()
+{
+    Sort(0, manage.size() - 1);
 }
 
-int RoomMng::getSize(){
+int RoomMng::getSize()
+{
     return manage.size();
 }
 
@@ -481,26 +496,25 @@ void RoomMng::checkIn()
 {
     system("cls");
     this->printAvailable();
-    cout << "\nNhap so phong muon checkin : ";
+    cout << "\nNHAP SO PHONG MUON CHECKIN: ";
     int sp;
     cin >> sp;
     int location = this->interpolationSearch(sp);
-    cout << "location : " << location;
     if (location != -1)
     {
-        cout << "\nPhong se duoc check in !" << endl;
+        cout << "\nPHONG SE DUOC CHECKIN:" << endl;
         cout << *this->manage[location];
     }
     else
     {
-        cout << "Phong khong ton tai !" << endl;
-        while(location == -1)
+        cout << "PHONG KHONG TON TAI!!!!" << endl;
+        while (location == -1)
         {
-            cout << "Nhap lai : ";
+            cout << "VUI LONG NHAP LAI : ";
             cin >> sp;
             location = this->interpolationSearch(sp);
         }
-        cout << "\nPhong se duoc check in !" << endl;
+        cout << "\nPHONG SE DUOC CHECKIN:" << endl;
         cout << *this->manage[location];
     }
     Customer *cust = new Customer();
@@ -512,25 +526,25 @@ void RoomMng::checkIn()
 void RoomMng::checkOut()
 {
     system("cls");
-    cout << "So phong check out : ";
+    cout << "NHAP SO PHONG MUON CHECKOUT:" << endl;
     int sp;
     cin >> sp;
     int location = this->interpolationSearch(sp);
     if (location != -1)
     {
-        cout << "\nPhong se duoc check out !" << endl;
+        cout << "\nPHONG SE DUOC CHECKOUT:" << endl;
         cout << *this->manage[location];
     }
     else
     {
-        cout << "Phong khong ton tai !" << endl;
-        while(location == -1)
+        cout << "PHONG KHONG TON TAI!!!" << endl;
+        while (location == -1)
         {
-            cout << "Nhap lai : ";
+            cout << "VUI LONG NHAP LAI: ";
             cin >> sp;
             location = this->interpolationSearch(sp);
         }
-        cout << "\nPhong se duoc check out !" << endl;
+        cout << "\nPHONG SE DUOC CHECKOUT:" << endl;
         cout << *this->manage[location];
     }
     int days = this->manage[location]->getCustomer()->dateDiff();
@@ -543,6 +557,6 @@ void RoomMng::checkOut()
 long double RoomMng::getBill(int days, int location)
 {
     if (this->manage[location]->getCustomer()->getAdvancePayment() > (this->manage[location]->getRent() * days))
-    return 0;
+        return 0;
     return (days * this->manage[location]->getRent()) - this->manage[location]->getCustomer()->getAdvancePayment();
 }

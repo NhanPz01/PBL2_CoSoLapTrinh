@@ -31,16 +31,16 @@ int main(){
     bool flag = true;
     do {
         system("cls");
-        cout << "-----------------------KHACH SAN AHIHI----------------------" << endl;
-        cout << "(1) Hien thi tat ca cac phong" << endl;
-        cout << "(2) Hien thi phong trong" << endl;
-        cout << "(3) Them phong" << endl;
-        cout << "(4) Sua thong tin" << endl;
-        cout << "(5) Xoa phong" << endl;
-        cout << "(6) Tim phong" << endl;
-        cout << "(7) Checkin" << endl;
-        cout << "(8) Checkout" << endl;
-        cout << "(9) Thoat" << endl;
+        cout << "-----------------------KHACH SAN AHIHI-----------------------" << endl;
+        cout << "\t(1) Hien thi tat ca cac phong" << endl;
+        cout << "\t(2) Hien thi phong trong" << endl;
+        cout << "\t(3) Them phong" << endl;
+        cout << "\t(4) Sua thong tin" << endl;
+        cout << "\t(5) Xoa phong" << endl;
+        cout << "\t(6) Tim phong" << endl;
+        cout << "\t(7) Checkin" << endl;
+        cout << "\t(8) Checkout" << endl;
+        cout << "\t(9) Thoat" << endl;
         cout << "Lua chon : ";
         int choose;
         cin >> choose;
@@ -58,21 +58,29 @@ int main(){
                 break;
             }
             case 4 : {
+                system("cls");
                 cout << "Nhap so phong : ";
                 int s;
                 cin >> s;
+                system("cls");
                 manager.updateRoom(s);
                 break;
             }
             case 5 : {
+                system("cls");
+                cout << "--------------------------XOA PHONG--------------------------";
                 cout << "Nhap so phong : ";
                 int s;
                 cin >> s;
                 manager.removeAt(s);
+                system("pause");
+                system("cls");
                 break;
             }
             case 6 : {
-                cout << "Nhap so phong : ";
+                system("cls");
+                cout << "-----------------------TIM KIEM PHONG-----------------------" << endl;
+                cout << "NHAP SO PHONG: ";
                 int s;
                 cin >> s;
                 int location = manager.interpolationSearch(s);
@@ -82,16 +90,17 @@ int main(){
                 }
                 else
                 {
-                    cout << "Phong khong ton tai !" << endl;
+                    cout << "PHONG KHONG TON TAI:" << endl;
                     while(location == -1)
                     {
-                        cout << "Vui long nhap lai : ";
+                        cout << "VUI LONG NHAP LAI: ";
                         cin >> s;
                         location = manager.interpolationSearch(s);
                     }
-                    cout << "\nPhong se bi xoa !" << endl;
+                    cout << "\nPHONG CAN TIM LA: " << endl;
                     manager.printRoom(location);
                 }
+                system("pause");
                 break;
             }
             case 7 : {

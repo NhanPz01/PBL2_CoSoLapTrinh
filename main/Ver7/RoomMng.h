@@ -19,9 +19,7 @@ public:
     void Sort(int,int);
     void Sort();
     int interpolationSearch(int);
-    // void printBy()
     void updateRoom(int);
-    // void addCust(int);
     void addCust(int, Customer*);
     void printBy();
     int partition(int, int);

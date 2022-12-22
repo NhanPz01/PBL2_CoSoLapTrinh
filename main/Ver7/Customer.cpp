@@ -1,6 +1,7 @@
 #include "Customer.h"
 #include <string>
 Customer::Customer(){
+
 }
 
 Customer::Customer(string name, string address, string phone, Date& from_date, Date& to_date, long double advance_payment, int booking_id)
@@ -65,7 +66,18 @@ int Customer::getBookingId() const{
 }
 
 ostream& operator<<(ostream& o, const Customer& c){
-    o << "\nHo va Ten: " << c.getName() << "\nDia Chi: " << c.getAddress() << "\nNgay Check In: " << c.getFromDate() << "\nNgay Check Out: " << c.getToDate() << "\nTien Coc: " << c.getAdvancePayment() << "\nID: " << c.getBookingId() << endl;
+    o << "\nHo va Ten: " 
+    << c.getName() 
+    << "\nDia Chi: " 
+    << c.getAddress() 
+    << "\nNgay Check In: " 
+    << c.getFromDate() 
+    << "\nNgay Check Out: " 
+    << c.getToDate() 
+    << "\nTien Coc: " 
+    << c.getAdvancePayment() 
+    << "\nID: " 
+    << c.getBookingId();
     return o;
 }
 istream& operator>>(istream& i, Customer& c){
