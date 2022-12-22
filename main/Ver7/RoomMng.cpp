@@ -3,7 +3,7 @@
 #include <fstream>
 #include <algorithm>
 
-void drawaline()
+void drawALine()
 {
     for (int i = 0; i < 61; i++)
     {
@@ -162,10 +162,12 @@ void RoomMng::add()
     this->manage.push_back(a);
     system("pause");
 }
+
 void RoomMng::add(Room *n)
 {
     this->manage.push_back(n);
 }
+
 void RoomMng::removeAt(int index)
 {
     int location = interpolationSearch(index);
@@ -194,38 +196,43 @@ void RoomMng::removeAt(int index)
         break;
     }
 }
+
 void RoomMng::removeFirst()
 {
     removeAt(0);
 }
+
 void RoomMng::removeLast()
 {
     removeAt(this->manage.size() - 1);
 }
+
 void RoomMng::printAll()
 {
     system("cls");
-    drawaline();
+    drawALine();
     cout << "DANH SACH CAC PHONG : ";
     cout << endl;
     for (int i = 0; i < this->manage.size(); i++)
         cout << endl
              << *(this->manage[i]);
-    drawaline();
+    drawALine();
     system("pause");
     system("cls");
 }
+
 void RoomMng::printRoom(int index)
 {
     cout << endl
          << "PHONG CAN TIM LA: " << *(this->manage[index]);
     system("pause");
 }
+
 void RoomMng::printAvailable()
 {
     vector<int> a;
     system("cls");
-    drawaline();
+    drawALine();
 
     cout << "\t\tTAT CA CAC PHONG HIEN DANG TRONG";
     for (int i = 0; i < this->manage.size(); i++)
@@ -239,7 +246,7 @@ void RoomMng::printAvailable()
     bool flag = true;
     do
     {
-        drawaline();
+        drawALine();
         cout << "(1) HIEN THI CHI TIET" << endl
              << "(..) TIEP TUC" << endl
              << "LUA CHON : ";
@@ -249,7 +256,7 @@ void RoomMng::printAvailable()
         {
         case 1:
             system("cls");
-            cout << "\tTHONG TIN TAT CA CAC PHONG HIEN DANG TRONG LA: " << endl;;
+            cout << "\tTHONG TIN TAT CA CAC PHONG HIEN DANG TRONG LA: " << endl;
             for (int i = 0; i < a.size(); i++)
             {
                 cout << (*this->manage[a[i]]) << endl;
@@ -260,8 +267,9 @@ void RoomMng::printAvailable()
             break;
         }
     } while (flag);
-    drawaline();
+    drawALine();
 }
+
 void RoomMng::updateRoom(int index)
 {
 
@@ -343,6 +351,7 @@ void RoomMng::updateRoom(int index)
     system("pause");
     system("cls");
 }
+
 int RoomMng::interpolationSearch(int x)
 {
     if ((*this->manage[0]).getRoomNumber() == x)
@@ -403,22 +412,22 @@ void RoomMng::printBy()
         {
         case 1:
         {
-            drawaline();
+            drawALine();
             cout << endl;
             for (int i = 0; i < this->manage.size(); i++)
                 if ((*this->manage[i]).getRent() < d)
                     cout << (*this->manage[i]) << endl;
-            drawaline();
+            drawALine();
             break;
         }
         case 2:
         {
-            drawaline();
+            drawALine();
             cout << endl;
             for (int i = 0; i < this->manage.size(); i++)
                 if ((*this->manage[i]).getRent() > d)
                     cout << (*this->manage[i]) << endl;
-            drawaline();
+            drawALine();
             break;
         }
         default:
@@ -559,7 +568,10 @@ void RoomMng::checkOut()
 
 long double RoomMng::getBill(int days, int location)
 {
-    if (this->manage[location]->getCustomer()->getAdvancePayment() > (this->manage[location]->getRent() * days))
+    if (this->manage[location]->getCustomer()->getAdvancePayment() > 
+        (this->manage[location]->getRent() * days)
+    )
         return 0;
-    return (days * this->manage[location]->getRent()) - this->manage[location]->getCustomer()->getAdvancePayment();
+    return (days * this->manage[location]->getRent()) -
+             this->manage[location]->getCustomer()->getAdvancePayment();
 }
