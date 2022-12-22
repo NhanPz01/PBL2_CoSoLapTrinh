@@ -241,7 +241,7 @@ void RoomMng::printAvailable()
     {
         drawaline();
         cout << "(1) HIEN THI CHI TIET" << endl
-             << "(..) LUI LAI" << endl
+             << "(..) TIEP TUC" << endl
              << "LUA CHON : ";
         int choose;
         cin >> choose;
@@ -497,6 +497,7 @@ void RoomMng::checkIn()
 {
     system("cls");
     this->printAvailable();
+    cout << "--------------------------CHECK IN---------------------------";
     cout << "\nNHAP SO PHONG MUON CHECKIN: ";
     int sp;
     cin >> sp;
@@ -527,6 +528,7 @@ void RoomMng::checkIn()
 void RoomMng::checkOut()
 {
     system("cls");
+    cout << "--------------------------CHECK OUT--------------------------";
     cout << "NHAP SO PHONG MUON CHECKOUT: ";
     int sp;
     cin >> sp;
