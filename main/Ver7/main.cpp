@@ -41,7 +41,7 @@ int main(){
         cout << "\t(7) Checkin" << endl;
         cout << "\t(8) Checkout" << endl;
         cout << "\t(9) Thoat" << endl;
-        cout << "Lua chon : ";
+        cout << "LUA CHON: ";
         int choose;
         cin >> choose;
         switch(choose) {
@@ -59,7 +59,7 @@ int main(){
             }
             case 4 : {
                 system("cls");
-                cout << "Nhap so phong : ";
+                cout << "NHAP SO PHONG: ";
                 int s;
                 cin >> s;
                 system("cls");
@@ -69,7 +69,7 @@ int main(){
             case 5 : {
                 system("cls");
                 cout << "--------------------------XOA PHONG--------------------------";
-                cout << "Nhap so phong : ";
+                cout << "NHAP SO PHONG: ";
                 int s;
                 cin >> s;
                 manager.removeAt(s);
@@ -97,10 +97,10 @@ int main(){
                         cin >> s;
                         location = manager.interpolationSearch(s);
                     }
-                    cout << "\nPHONG CAN TIM LA: " << endl;
+                    cout << "\nPHONG CAN TIM LA: " 
+                    << endl;
                     manager.printRoom(location);
                 }
-                system("pause");
                 break;
             }
             case 7 : {

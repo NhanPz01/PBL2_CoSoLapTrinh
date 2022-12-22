@@ -372,11 +372,12 @@ int RoomMng::interpolationSearch(int x)
 void RoomMng::printBy()
 {
     int s;
-    cout << "\t\tIn Theo:" << endl;
-    cout << "\n\t1. Trang thai phong dang trong";
-    cout << "\n\t2. Tien thue phong";
-    cout << "\n\t3. Loai phong";
-    cout << "\n\tNhap Lua Chon Cua Ban (nhap 1 so ngoai 3 so o tren se in toan bo phong): ";
+    cout << "\t\tIN THEO:" << endl;
+    cout << "\n\t(1) Trang thai phong dang trong";
+    cout << "\n\t(2) Tien thue phong";
+    cout << "\n\t(3) Loai phong";
+    cout << "\n\t(..) QUAY LAI";
+    cout << "\n\tLUA CHON:  ";
     cin >> s;
     cout << endl;
     switch (s)
@@ -390,12 +391,12 @@ void RoomMng::printBy()
     {
         int s2;
         long double d;
-        cout << "\n\t1. So tien be hon";
-        cout << "\n\t2. So tien lon hon";
-        cout << "\n\tNhap lua chon cua ban: ";
+        cout << "\n\t(1) So tien be hon";
+        cout << "\n\t(2) So tien lon hon";
+        cout << "\n\tLUA CHON: ";
         cin.ignore();
         cin >> s2;
-        cout << "\n\tNhap so tien: ";
+        cout << "\n\tNHAP SO TIEN: ";
         cin >> d;
         cout << endl;
         switch (s2)
@@ -432,9 +433,9 @@ void RoomMng::printBy()
     {
         int s3;
         bool b;
-        cout << "\n\t1. Phong don/doi";
-        cout << "\n\t2. Phong gia dinh";
-        cout << "\n\tNhap loai phong: ";
+        cout << "\n\t(1) Phong doi";
+        cout << "\n\t(2) Phong gia dinh";
+        cout << "\n\tLUA CHON: ";
         cin >> s3;
         cout << endl;
         if (s3 == 1)
@@ -526,7 +527,7 @@ void RoomMng::checkIn()
 void RoomMng::checkOut()
 {
     system("cls");
-    cout << "NHAP SO PHONG MUON CHECKOUT:" << endl;
+    cout << "NHAP SO PHONG MUON CHECKOUT: ";
     int sp;
     cin >> sp;
     int location = this->interpolationSearch(sp);
