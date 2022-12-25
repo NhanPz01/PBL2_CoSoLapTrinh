@@ -470,13 +470,14 @@ void RoomMng::printBy()
     }
 }
 
+
 int RoomMng::partition(int low, int high)
 {
-    int pivot = (*this->manage[high]).getRoomNumber(); // pivot
-    int i
-        = (low - 1);
+    int pivot = (*this->manage[high]).getRoomNumber();
+    int i = (low - 1); 
     for (int j = low; j <= high - 1; j++) {
         if ((*this->manage[j]).getRoomNumber() < pivot) {
+            i++;
             swap((this->manage[i]), (this->manage[j]));
         }
     }
@@ -491,13 +492,12 @@ void RoomMng::Sort(int low, int high)
         Sort(pi + 1, high);
     }
 }
-void RoomMng::Sort()
-{
+
+void RoomMng::Sort(){
     Sort(0, manage.size() - 1);
 }
 
-int RoomMng::getSize()
-{
+int RoomMng::getSize(){
     return manage.size();
 }
 
@@ -511,13 +511,13 @@ void RoomMng::checkIn()
     cin >> sp;
     int location = this->interpolationSearch(sp);
     if (location != -1)
-    {
+    {   
         cout << "\nPHONG SE DUOC CHECKIN:" << endl;
         cout << *this->manage[location];
     }
     else
     {
-        cout << "PHONG KHONG TON TAI!!!!" << endl;
+        cout << "PHONG KHONG TON TAI HOAC DA CO NGUOI" << endl;
         while (location == -1)
         {
             cout << "VUI LONG NHAP LAI : ";
@@ -541,7 +541,7 @@ void RoomMng::checkOut()
     int sp;
     cin >> sp;
     int location = this->interpolationSearch(sp);
-    if (location != -1)
+    if (location != -1 && this->manage[location]->getStatus() == 1)
     {
         cout << "\nPHONG SE DUOC CHECKOUT:" << endl;
         cout << *this->manage[location];

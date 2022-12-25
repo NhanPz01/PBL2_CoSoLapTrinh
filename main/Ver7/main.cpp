@@ -83,6 +83,7 @@ int main(){
                 system("cls");
                 cout << "-----------------------TIM KIEM PHONG-----------------------" << endl;
                 cout << "NHAP SO PHONG: ";
+                manager.Sort();
                 int s;
                 cin >> s;
                 int location = manager.interpolationSearch(s);
