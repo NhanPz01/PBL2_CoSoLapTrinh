@@ -147,7 +147,7 @@ void RoomMng::saveCustomersData(const string CUSTOMERS)
 }
 
 void RoomMng::add()
-{   
+{
     cout << "--------------------------THEM PHONG-------------------------";
     int anotherNumber;
     int size = this->manage.size();
@@ -305,7 +305,7 @@ void RoomMng::updateRoom(int index)
         {
             cout << "\t(4) Khach hang" << endl;
         }
-            cout << "\t(..) Lui lai" << endl
+        cout << "\t(..) Lui lai" << endl
              << "Lua chon : ";
         int choose;
         cin >> choose;
@@ -470,13 +470,14 @@ void RoomMng::printBy()
     }
 }
 
-
 int RoomMng::partition(int low, int high)
 {
     int pivot = (*this->manage[high]).getRoomNumber();
-    int i = (low - 1); 
-    for (int j = low; j <= high - 1; j++) {
-        if ((*this->manage[j]).getRoomNumber() < pivot) {
+    int i = (low - 1);
+    for (int j = low; j <= high - 1; j++)
+    {
+        if ((*this->manage[j]).getRoomNumber() < pivot)
+        {
             i++;
             swap((this->manage[i]), (this->manage[j]));
         }
@@ -485,19 +486,22 @@ int RoomMng::partition(int low, int high)
     return (i + 1);
 }
 void RoomMng::Sort(int low, int high)
-{   
-    if (low < high) {
+{
+    if (low < high)
+    {
         int pi = partition(low, high);
         Sort(low, pi - 1);
         Sort(pi + 1, high);
     }
 }
 
-void RoomMng::Sort(){
+void RoomMng::Sort()
+{
     Sort(0, manage.size() - 1);
 }
 
-int RoomMng::getSize(){
+int RoomMng::getSize()
+{
     return manage.size();
 }
 
@@ -510,21 +514,15 @@ void RoomMng::checkIn()
     int sp;
     cin >> sp;
     int location = this->interpolationSearch(sp);
-    if (location == -1 || this->manage[location]->getStatus() == 1)
-    {   
+    while (location == -1 || this->manage[location]->getStatus() == 1)
+    {
         cout << "PHONG KHONG TON TAI HOAC DA CO NGUOI" << endl;
-        while (location == -1 )
-        {
-            cout << "VUI LONG NHAP LAI : ";
-            cin >> sp;
-            location = this->interpolationSearch(sp);
-        }
-        cout << "\nPHONG SE DUOC CHECKIN:" << endl;
-        cout << *this->manage[location];
+        cout << "VUI LONG NHAP LAI : ";
+        cin >> sp;
+        location = this->interpolationSearch(sp);
     }
-
-        cout << "\nPHONG SE DUOC CHECKIN:" << endl;
-        cout << *this->manage[location];  
+    cout << "\nPHONG SE DUOC CHECKIN:" << endl;
+    cout << *this->manage[location];
     Customer *cust = new Customer();
     cin >> *cust;
     this->manage[location]->addCust(cust);
@@ -539,23 +537,15 @@ void RoomMng::checkOut()
     int sp;
     cin >> sp;
     int location = this->interpolationSearch(sp);
-    if (location != -1 && this->manage[location]->getStatus() == 1)
+    while (location == -1 || this->manage[location]->getStatus() == 0)
     {
-        cout << "\nPHONG SE DUOC CHECKOUT:" << endl;
-        cout << *this->manage[location];
+        cout << "PHONG KHONG TON TAI HOAC KHONG CO NGUOI" << endl;
+        cout << "VUI LONG NHAP LAI: ";
+        cin >> sp;
+        location = this->interpolationSearch(sp);
     }
-    else
-    {
-        cout << "PHONG KHONG TON TAI!!!" << endl;
-        while (location == -1)
-        {
-            cout << "VUI LONG NHAP LAI: ";
-            cin >> sp;
-            location = this->interpolationSearch(sp);
-        }
-        cout << "\nPHONG SE DUOC CHECKOUT:" << endl;
-        cout << *this->manage[location];
-    }
+    cout << "\nPHONG SE DUOC CHECKOUT:" << endl;
+    cout << *this->manage[location];
     int days = this->manage[location]->getCustomer()->dateDiff();
 
     cout << fixed << "\nBill : " << this->getBill(days, location) << endl;
@@ -566,9 +556,8 @@ void RoomMng::checkOut()
 long double RoomMng::getBill(int days, int location)
 {
     if (this->manage[location]->getCustomer()->getAdvancePayment() >
-        (this->manage[location]->getRent() * days)
-    )
+        (this->manage[location]->getRent() * days))
         return 0;
     return (days * this->manage[location]->getRent()) -
-             this->manage[location]->getCustomer()->getAdvancePayment();
+           this->manage[location]->getCustomer()->getAdvancePayment();
 }
