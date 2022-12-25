@@ -147,7 +147,8 @@ void RoomMng::saveCustomersData(const string CUSTOMERS)
 }
 
 void RoomMng::add()
-{
+{   
+    cout << "--------------------------THEM PHONG-------------------------";
     int anotherNumber;
     int size = this->manage.size();
     Room *a = new Room;
@@ -471,12 +472,11 @@ void RoomMng::printBy()
 
 int RoomMng::partition(int low, int high)
 {
-    int pivot = (*this->manage[high]).getRoomNumber();
-    int i = (low - 1);
-    for (int j = low; j <= high - 1; j++)
-    {
-        if ((*this->manage[j]).getRoomNumber() < pivot)
-        {
+    int pivot = (*this->manage[high]).getRoomNumber(); // pivot
+    int i
+        = (low - 1);
+    for (int j = low; j <= high - 1; j++) {
+        if ((*this->manage[j]).getRoomNumber() < pivot) {
             swap((this->manage[i]), (this->manage[j]));
         }
     }
@@ -484,9 +484,8 @@ int RoomMng::partition(int low, int high)
     return (i + 1);
 }
 void RoomMng::Sort(int low, int high)
-{
-    if (low < high)
-    {
+{   
+    if (low < high) {
         int pi = partition(low, high);
         Sort(low, pi - 1);
         Sort(pi + 1, high);

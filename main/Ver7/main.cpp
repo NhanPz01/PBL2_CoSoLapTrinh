@@ -28,6 +28,7 @@ int main(){
     Room  *c = new Room(0,1999,1,1);
     RoomMng manager;
     manager.getRoomData(ROOMS, CUSTOMERS);
+    manager.Sort();
     bool flag = true;
     do {
         system("cls");
@@ -55,6 +56,7 @@ int main(){
             }
             case 3 : {
                 manager.add();
+                manager.Sort();
                 break;
             }
             case 4 : {
