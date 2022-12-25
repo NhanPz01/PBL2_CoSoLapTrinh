@@ -568,7 +568,7 @@ void RoomMng::checkOut()
 
 long double RoomMng::getBill(int days, int location)
 {
-    if (this->manage[location]->getCustomer()->getAdvancePayment() > 
+    if (this->manage[location]->getCustomer()->getAdvancePayment() >
         (this->manage[location]->getRent() * days)
     )
         return 0;

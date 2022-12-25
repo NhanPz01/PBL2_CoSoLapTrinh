@@ -7,11 +7,11 @@ int main(){
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof(cfi);
     cfi.nFont = 0;
-    cfi.dwFontSize.X = 0;                   // Width of each character in the font
-    cfi.dwFontSize.Y = 30;                  // Height
+    cfi.dwFontSize.X = 0;
+    cfi.dwFontSize.Y = 30;
     cfi.FontFamily = FF_DONTCARE;
     cfi.FontWeight = FW_NORMAL;
-    wcscpy(cfi.FaceName, L"Consolas"); // Choose your font
+    wcscpy(cfi.FaceName, L"Consolas");
     SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
 
     cout << "Font: Consolas, Size: 24\n";
@@ -31,7 +31,7 @@ int main(){
     bool flag = true;
     do {
         system("cls");
-        cout << "-----------------------KHACH SAN AHIHI-----------------------" << endl;
+        cout << "-----------------------KHACH SAN AHIHI----------------------" << endl;
         cout << "\t(1) Hien thi tat ca cac phong" << endl;
         cout << "\t(2) Hien thi phong trong" << endl;
         cout << "\t(3) Them phong" << endl;
@@ -97,7 +97,7 @@ int main(){
                         cin >> s;
                         location = manager.interpolationSearch(s);
                     }
-                    cout << "\nPHONG CAN TIM LA: " 
+                    cout << "\nPHONG CAN TIM LA: "
                     << endl;
                     manager.printRoom(location);
                 }
