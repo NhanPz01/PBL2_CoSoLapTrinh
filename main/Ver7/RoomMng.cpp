@@ -510,15 +510,10 @@ void RoomMng::checkIn()
     int sp;
     cin >> sp;
     int location = this->interpolationSearch(sp);
-    if (location != -1)
+    if (location == -1 || this->manage[location]->getStatus() == 1)
     {   
-        cout << "\nPHONG SE DUOC CHECKIN:" << endl;
-        cout << *this->manage[location];
-    }
-    else
-    {
         cout << "PHONG KHONG TON TAI HOAC DA CO NGUOI" << endl;
-        while (location == -1)
+        while (location == -1 )
         {
             cout << "VUI LONG NHAP LAI : ";
             cin >> sp;
@@ -527,6 +522,9 @@ void RoomMng::checkIn()
         cout << "\nPHONG SE DUOC CHECKIN:" << endl;
         cout << *this->manage[location];
     }
+
+        cout << "\nPHONG SE DUOC CHECKIN:" << endl;
+        cout << *this->manage[location];  
     Customer *cust = new Customer();
     cin >> *cust;
     this->manage[location]->addCust(cust);
